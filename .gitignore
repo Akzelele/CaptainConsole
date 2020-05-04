@@ -1,2 +1,7 @@
 /venv/
 /.idea/sonarlint/issuestore/index.pb
+.idea/CaptainConsole.iml
+.idea/misc.xml
+*.pyc
+.idea/CaptainConsole.iml
+.idea/misc.xml
