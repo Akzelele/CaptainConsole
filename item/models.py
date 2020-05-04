@@ -5,7 +5,7 @@ from console.models import Console
 # Create your models here.
 
 class ItemCategory(models.Model):
-    name = models.CharField(255)
+    name = models.CharField(max_length=255)
 
 
 class Item(models.Model):
@@ -15,11 +15,14 @@ class Item(models.Model):
     price = models.FloatField()
     on_sale = models.BooleanField()
     console = models.ForeignKey(Console, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
+
 
 class ItemImage(models.Model):
     image = models.CharField(max_length=999)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.image
