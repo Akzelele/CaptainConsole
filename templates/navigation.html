@@ -7,14 +7,33 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'item-index' %}">items <span class="sr-only">(current)</span></a>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Nintendo
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">NES</a>
+          <a class="dropdown-item" href="#">SNES</a>
+          <a class="dropdown-item" href="#">PES</a>
+             {#TODO: gera þetta án þess að hardcode-a allt#}
+        </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'console-index' %}">consoles</a>
+                <a class="nav-link" href="{% url 'console-index' %}">Sega</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'console-index' %}">Playstation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'console-index' %}">XBOX</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'console-index' %}">Atari</a>
+            </li>
         </ul>
-
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
     </div>
 </nav>
