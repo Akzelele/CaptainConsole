@@ -7,14 +7,17 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/nuchowyz</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="User Data Source -" uuid="c825bd93-f25c-4d90-9658-8c7fbff2da7e">
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>java.sql.Driver</jdbc-driver>
-    </data-source>
     <data-source source="LOCAL" name="nuchowyz@balarama.db.elephantsql.com" uuid="5a14f5c5-9625-41a9-81f2-a574cdcc00a2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/nuchowyz</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="d5f3ad2e-7b6e-4741-879b-7c62de0701ea">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/CaptainConsole/settings.py</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/nuchowyz</jdbc-url>
     </data-source>

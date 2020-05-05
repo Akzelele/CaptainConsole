@@ -9,6 +9,7 @@ class Manufacturer(models.Model):
     def __str__(self):
         return self.name
 
+
 class Console(models.Model):
     name = models.CharField(max_length=255)
     release_date = models.DateField()
