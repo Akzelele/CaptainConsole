@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a>consoler</a>
+    <div class="console-selection">
+        {% include 'console/single_console.html' with console=console %}
+
+    </div>
 {% endblock %}
