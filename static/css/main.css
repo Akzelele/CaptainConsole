@@ -1,3 +1,32 @@
+.items{
+    display: flex;
+    flex-wrap:wrap;
+    align-content: flex-start ;
+
+}
+.SingleItem {
+    background-color: lavender;
+    float: left;
+    clear:both
+    display: inline-block;
+    height : 166px;
+    width: 49%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    align-content: center;
+}
+
+.SingleItem a:link{
+    color:black;
+}
+.ItemImg{
+height: 140px;
+}
+
+.Caption{
+    display: block;
+}
+
 
 footer {
     width: 100%;
@@ -5,26 +34,3 @@ footer {
     position: relative;
     bottom: 0;
 }
-
-.items{
-
-    display: flex;
-    flex-wrap:wrap;
-    align-content: flex-start ;
-
-}
-.single-item {
-
-    display: inline-block;
-    height : 166px;
-    width: 49%;
-}
-
-.single-item a:link{
-    color:black;
-}
-.item-img{
-    height: 150px;
-}
-
-

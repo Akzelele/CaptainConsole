@@ -1,8 +1,4 @@
-<div class="single-item">
-<a href = "/{{ item.name }}">
-    <img class="item-img" src="{{ item.itemimage_set.first }}" alt="{{ item.name }} image" />
-    {{ item.name }}
-
-
-</div>
+<a href = "/{{ item.name }}" class="SingleItem">
+    <img class="ItemImg" src="{{ item.itemimage_set.first }}" alt="{{ item.name }} image" />
+    <span id="Caption">{{ item.name }}</span>
 </a>
