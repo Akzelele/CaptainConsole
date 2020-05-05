@@ -15,8 +15,5 @@ def get_console_by_id(request, id):
 
 
 def manufacturer_index(request):
-    manufacturer_context = {
-        'manufacturers': "potato"
-
-    }
-    return render(request, 'item/index.html', manufacturer_context)
+    manufacturer_context = {'manufacturers': Manufacturer.objects.all().order_by('id')}
+    return render(request, 'navigation.html', manufacturer_context)
