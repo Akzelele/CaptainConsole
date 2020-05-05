@@ -7,17 +7,21 @@ footer {
 }
 
 .items{
-    background-color: navy;
+
     display: flex;
     flex-wrap:wrap;
     align-content: flex-start ;
 
 }
 .single-item {
-    background-color: aqua;
+
     display: inline-block;
     height : 166px;
     width: 49%;
+}
+
+.single-item a:link{
+    color:black;
 }
 .item-img{
     height: 150px;
