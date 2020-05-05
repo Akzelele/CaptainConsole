@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from console.models import Console
+from console.models import Console, Manufacturer
 
 
 # Create your views here.
@@ -12,3 +12,11 @@ def get_console_by_id(request, id):
     return render(request, 'console/single_console.html', {
         'console    ': get_object_or_404(Console, pk=id)
     })
+
+
+def manufacturer_index(request):
+    manufacturer_context = {
+        'manufacturers': "potato"
+
+    }
+    return render(request, 'item/index.html', manufacturer_context)

@@ -6,6 +6,9 @@ class Manufacturer(models.Model):
     name = models.CharField(max_length=255)
     logo = models.CharField(max_length=999)
 
+    def __str__(self):
+        return self.name
+
 
 class Console(models.Model):
     name = models.CharField(max_length=255)

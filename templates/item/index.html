@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>itemser</h1>
-{% endblock %}
+<a>manufacturers</a>
+        <ul>
+            {% for manufacturer in manufacturers %}
+                <li>
+                {{ manufacturer}}
+                </li>
+            {% endfor %}
+        </ul>
+{% endblock content%}
