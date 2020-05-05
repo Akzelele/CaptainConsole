@@ -12,5 +12,11 @@
       <configured-by-url>true</configured-by-url>
       <jdbc-driver>java.sql.Driver</jdbc-driver>
     </data-source>
+    <data-source source="LOCAL" name="nuchowyz@balarama.db.elephantsql.com" uuid="5a14f5c5-9625-41a9-81f2-a574cdcc00a2">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/nuchowyz</jdbc-url>
+    </data-source>
   </component>
 </project>
