@@ -10,7 +10,7 @@ def index(request):
 
 def get_console_by_id(request, id):
     return render(request, 'console/single_console.html', {
-        'console    ': get_object_or_404(Console, pk=id)
+        'console': get_object_or_404(Console, pk=id)
     })
 
 
