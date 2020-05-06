@@ -1,5 +1,6 @@
+{% extends 'base.html' %}
 <div class="a console">
-<a href = "/{{ console.name }}">
+<a href = "/{{ console.id }}">
 
     <img class="console-img" src="{{ console.ConsoleImage_set.first.image }}"alt="{{ console.name }} image" />
     <h4>{{ console.name }}</h4>
