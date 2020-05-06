@@ -2,8 +2,9 @@
 {% block content %}
 
     <h1>{{ item.name }}</h1>
+    <p>{{ item.console }}</p>
     <p>{{ item.description }}</p>
-    <p>{{ item.price }}</p>
+    <p>$ {{ item.price }}</p>
     {% for item_image in item.itemimage_set.all %}
         <a>
             <img src="{{ item_image.image }}" class="ItemImg"/>
