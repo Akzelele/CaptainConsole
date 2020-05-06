@@ -21,17 +21,57 @@
 height: 140px;
 }
 
-.Caption{
+.Caption {
     display: block;
 }
 
-
-footer {
-    width: 100%;
-    background-color: #87adb8;
-    position: relative;
-    bottom: 0;
-}
 .navbar{
     background-color: #87adb8;
+}
+
+.ItemDetailsPage{
+    border: black 1px solid;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+}
+
+.ItemDetailsPageInfo{
+    display: flex;
+    direction: row;
+}
+
+.ItemTitle{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.ItemDescription{
+    margin-left: 20px;
+    background-color: white;
+    border: black 1px solid;
+    min-width: 200px;
+    max-width: 350px;
+}
+
+.FooterContainer{
+    border-top: black;
+    background-color: #87adb8;
+    position: relative;
+}
+
+.EntirePage{
+
+}
+
+.PageContent{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.footer{
+
+    margin-top: auto;
 }
