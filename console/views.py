@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from console.models import Console, Manufacturer
+from helper.context_helper import build_context
 
 
-# Create your views here.
 def index(request):
-    context = {'consoles': Console.objects.all().order_by('name')}
+    context = build_context()
     return render(request, 'navigation.html', context)
 
 
@@ -15,5 +15,5 @@ def get_console_by_id(request, id):
 
 
 def manufacturer_index(request):
-    manufacturer_context = {'manufacturers': Manufacturer.objects.all().order_by('id')}
-    return render(request, 'navigation.html', manufacturer_context)
+    context = build_context()
+    return render(request, 'navigation.html', context)

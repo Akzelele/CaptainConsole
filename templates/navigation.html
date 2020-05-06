@@ -15,7 +15,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       {% for console in consoles%}
                           {% if console.manufacturer == manufacturer %}
-                              <a class="dropdown-item" href="#"> {{ console.name }}</a>
+                              <a class="dropdown-item" href="/consoles/{{ console.id }}"> {{ console.name }}</a>
                           {% endif %}
                       {% endfor %}
                     </div>
