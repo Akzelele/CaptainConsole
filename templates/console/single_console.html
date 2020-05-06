@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
-<div class="a console">
-<a href = "/{{ console.id }}">
-
-    <img class="console-img" src="{{ console.ConsoleImage_set.first.image }}"alt="{{ console.name }} image" />
-    <h4>{{ console.name }}</h4>
-    <p>{{ console.description }}</p>
-</a>
-</div>
+{% block content %}
+    <div class="ConsoleDetails">
+        <h1 class="ConsoleTitle">{{ console.name }}</h1>
+        <div class="ConsoleDetailsPageInfo">
+            <p class="ConsoleReleaseDate"> Release Date: {{ console.release_date}}</p>
+            <div class="ConsoleImages">
+                {% for console_image in console.consoleimage_set.all %}
+                    <a class="ConsoleDetailsPageImages">
+                        <img src="{{ console_image.image }}" class="ConsoleImage"/>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
