@@ -18,7 +18,8 @@
 
 
 .ItemImg{
-height: 140px;
+    height: 140px;
+    margin-left: 15px;
 }
 
 .Caption {
@@ -55,6 +56,7 @@ height: 140px;
     border: black 1px solid;
     min-width: 200px;
     max-width: 350px;
+    padding: 10px;
 }
 
 .FooterContainer{
@@ -73,7 +75,13 @@ height: 140px;
     height: 100vh;
 }
 
+
+
 .footer{
 
     margin-top: auto;
+}
+
+#ItemPrice{
+    margin-left: 15px;
 }
