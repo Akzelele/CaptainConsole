@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="ConsoleDetails">
-        <h1 class="ConsoleTitle">{{ console.name }}</h1>
-        <div class="ConsoleDetailsPageInfo">
-            <p class="ConsoleReleaseDate"> Release Date: {{ console.release_date}}</p>
             <div class="ConsoleImages">
                 {% for console_image in console.consoleimage_set.all %}
                     <a class="ConsoleDetailsPageImages">
