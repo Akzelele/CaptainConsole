@@ -4,23 +4,55 @@
     <img src="/static/images/captainCircle.png" alt="Captain Console" width="80px"/>
     </a>
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mr-auto">
-        {% for manufacturer in manufacturers %}
-                    <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{ manufacturer.name }}
+                  Sony
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">NES</a>
-                  <a class="dropdown-item" href="#">SNES</a>
-                  <a class="dropdown-item" href="#">PES</a>
+                  <a class="dropdown-item" href="#">Playstation</a>
+                  <a class="dropdown-item" href="#">Playstation 2</a>
+                  <a class="dropdown-item" href="#">Playstation 3</a>
+                  <a class="dropdown-item" href="#">PSP</a>
                 </div>
             </li>
-        {% endfor %}
+            <li class="nav-item dropdown">
+                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Nintendo
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Nintendo DS</a>
+                  <a class="dropdown-item" href="#">Game Boy </a>
+                  <a class="dropdown-item" href="#">Game Boy Color</a>
+                  <a class="dropdown-item" href="#">Game Boy Advance</a>
+                  <a class="dropdown-item" href="#">NES</a>
+                  <a class="dropdown-item" href="#">SNES</a>
+                  <a class="dropdown-item" href="#">Wii</a>
+                  <a class="dropdown-item" href="#">Nintendo GameCube</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Microsoft
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Xbox</a>
+                  <a class="dropdown-item" href="#">Xbox 360</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sega
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Genesis</a>
+                </div>
+            </li>
         </ul>
     </div>
+
+
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
