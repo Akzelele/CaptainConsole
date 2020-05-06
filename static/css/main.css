@@ -30,15 +30,17 @@ height: 140px;
 }
 
 .ItemDetailsPage{
+    margin: auto;
     border: black 1px solid;
     margin-top: 20px;
     margin-bottom: 10px;
     background-color: lightgray;
+    max-width: 800px;
+
 }
 
 .ItemDetailsPageInfo{
     display: flex;
-    direction: row;
 }
 
 .ItemTitle{
