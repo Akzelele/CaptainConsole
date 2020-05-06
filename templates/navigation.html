@@ -1,54 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="/">
-        Captain Console
+
     <img src="/static/images/captainCircle.png" alt="Captain Console" width="80px"/>
+        Captain Console
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Sony
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Playstation</a>
-                  <a class="dropdown-item" href="#">Playstation 2</a>
-                  <a class="dropdown-item" href="#">Playstation 3</a>
-                  <a class="dropdown-item" href="#">PSP</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Nintendo
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Nintendo DS</a>
-                  <a class="dropdown-item" href="#">Game Boy </a>
-                  <a class="dropdown-item" href="#">Game Boy Color</a>
-                  <a class="dropdown-item" href="#">Game Boy Advance</a>
-                  <a class="dropdown-item" href="#">NES</a>
-                  <a class="dropdown-item" href="#">SNES</a>
-                  <a class="dropdown-item" href="#">Wii</a>
-                  <a class="dropdown-item" href="#">Nintendo GameCube</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Microsoft
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Xbox</a>
-                  <a class="dropdown-item" href="#">Xbox 360</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sega
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Genesis</a>
-                </div>
-            </li>
+            {% for manufacturer in manufacturers %}
+                        <li class="nav-item dropdown">
+                    <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ manufacturer.name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% for console in consoles%}
+                          {% if console.manufacturer == manufacturer %}
+                              <a class="dropdown-item" href="#"> {{ console.name }}</a>
+                          {% endif %}
+                      {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 

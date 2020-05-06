@@ -5,7 +5,7 @@ from console.models import Console, Manufacturer
 # Create your views here.
 def index(request):
     context = {'consoles': Console.objects.all().order_by('name')}
-    return render(request, 'console/index.html', context)
+    return render(request, 'navigation.html', context)
 
 
 def get_console_by_id(request, id):
