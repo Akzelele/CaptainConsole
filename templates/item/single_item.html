@@ -1,4 +1,5 @@
 <a href = "/{{ item.name }}" class="SingleItem">
     <img class="ItemImg" src="{{ item.itemimage_set.first }}" alt="{{ item.name }} image" />
     <span id="Caption">{{ item.name }}</span>
+    <p id="Price">$ {{ item.price }}</p>
 </a>
