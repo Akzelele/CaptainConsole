@@ -10,11 +10,10 @@
                 <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Sony
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Playstation</a>
-                  <a class="dropdown-item" href="#">Playstation 2</a>
-                  <a class="dropdown-item" href="#">Playstation 3</a>
-                  <a class="dropdown-item" href="#">PSP</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for console in consoles %}
+                    <a class="dropdown-item" href="#"> {{ console.name }}</a>
+                  {% endfor %}
                 </div>
             </li>
             <li class="nav-item dropdown">
