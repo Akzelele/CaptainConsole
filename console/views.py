@@ -5,7 +5,7 @@ from helper.context_helper import build_context
 
 def index(request):
     context = build_context()
-    return render(request, 'navigation.html', context)
+    return render(request, 'base.html', context)
 
 
 def get_console_by_id(request, id):
@@ -16,4 +16,4 @@ def get_console_by_id(request, id):
 
 def manufacturer_index(request):
     context = build_context()
-    return render(request, 'navigation.html', context)
+    return render(request, 'base.html', context)
