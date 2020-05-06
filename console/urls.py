@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     path('<int:id>', views.index, name="console-index"),
-
 ]
