@@ -57,6 +57,7 @@
     min-width: 200px;
     max-width: 350px;
     padding: 10px;
+
 }
 
 .FooterContainer{
@@ -76,12 +77,19 @@
 }
 
 
-
 .footer{
 
     margin-top: auto;
 }
 
-#ItemPrice{
-    margin-left: 15px;
+
+#CheckoutButton{
+    border-color: green;
+    background-color: black;
+    float: right;
+    margin: 15px;
+}
+
+#AddToCartButton{
+    margin: 15px;
 }
