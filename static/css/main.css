@@ -82,14 +82,8 @@
     margin-top: auto;
 }
 
-
-#CheckoutButton{
-    border-color: green;
-    background-color: black;
-    float: right;
-    margin: 15px;
-}
-
 #AddToCartButton{
-    margin: 15px;
+    display: block;
+    margin:auto;
+    margin-bottom: 10px;
 }
