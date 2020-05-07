@@ -7,7 +7,7 @@
 .SingleItem {
     background-color: lavender;
     clear:both;
-    height : 238px;
+    height : 258px;
     width: 40%;
     margin: 10px;
     align-content: center;
@@ -33,12 +33,18 @@
 .SingleItem #ItemPrice{
     display:block;
     text-align: center;
+    margin-bottom: 7px;
 }
 
 .SingleItem #Caption{
     display: block;
     text-align: center;
 }
+
+.SingleItem #AddToCartButton {
+
+}
+
 
 
 
