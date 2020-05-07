@@ -6,21 +6,41 @@
 }
 .SingleItem {
     background-color: lavender;
-    float: left;
     clear:both;
-    display: inline-block;
-    height : 166px;
-    width: 45%;
+    height : 238px;
+    width: 40%;
     margin: 10px;
     align-content: center;
     border: black 1px solid;
+    font-size: 14px;
 }
 
 
 .ItemImg{
     height: 140px;
     margin-left: 15px;
+    text-align: center;
 }
+
+.SingleItem .ItemImg{
+    max-height: 140px;
+    max-width: 160px;
+    display:block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.SingleItem #ItemPrice{
+    display:block;
+    text-align: center;
+}
+
+.SingleItem #Caption{
+    display: block;
+    text-align: center;
+}
+
+
 
 .Caption {
     display: block;
