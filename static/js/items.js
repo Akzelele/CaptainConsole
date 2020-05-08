@@ -7,13 +7,15 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="well item">
+                    return `<div class="SingleItem">
                                 <a href="/items/${d.id}">
-                                    <img class="item-img" src="${d.firstImage}" />
-                                    <h4>${d.name}</h4>
-                                    <p>${d.description}</p>
+                                    <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
+                                    <span id="Caption">${ d.name }</span>
                                 </a>
+                                <p id="ItemPrice">${d.price}</p>
+                                <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
                             </div>`
+                    //TODO:order by name
                 })
                 $('.items').html(newHtml.join(''));
                 $('#search-box').val('');

@@ -11,12 +11,13 @@ def index(request):
         items = [{
             'id': x.id,
             'name': x.name,
-            'description': x.description,
+            'price': x.price,
             'firstImage': x.itemimage_set.first().image
         } for x in Item.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': items})
     context = build_context()
     return render(request, 'item/index.html', context)
+
 
 def get_item_by_id(request, id):
     item_context = build_item_context(id)

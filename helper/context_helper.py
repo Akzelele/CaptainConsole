@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 def build_context():
     return {
         'consoles': Console.objects.all().order_by('name'),
-        'items': Item.objects.all().order_by('id'),
+        'items': Item.objects.all().order_by('name'),
         'manufacturers': Manufacturer.objects.all().order_by('name')
     }
 
