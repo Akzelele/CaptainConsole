@@ -124,3 +124,8 @@
     margin-bottom: 10px;
 }
 
+.btn-primary{
+    background-color: #87adb8;
+    color: black;
+    border-color: #73a3ae;
+}
