@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from console.models import Console, Manufacturer
-from helper.context_helper import build_context
+from django.shortcuts import render
+from console.models import Console
+from helper.context_helper import *
 
 
 def index(request):
@@ -9,10 +9,7 @@ def index(request):
 
 
 def get_console_by_id(request, id):
-    return render(request, 'console/single_console.html', {
-        'console': get_object_or_404(Console, pk=id)
-    })
-
+    return render(request, 'console/single_console.html', build_console_context(id))
 
 def manufacturer_index(request):
     context = build_context()
