@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Profile</h1>
-    <form class="form from-horizontal" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Update" />
-    </form>
+    <div id="container">
+        <h2 id="ProfileInfo">Profile Information</h2>
+        <h4 id="GreetingMessage">Greetings {{ user }}! We at Captain Console hope you're having a great time!</h4>
+        <h4 id="Username">Username: {{ user }}</h4>
+        <h4 id="FirstName">First Name: {{ user.first_name }}</h4>
+        <h4 id="LastName">Last Name: {{ user.last_name }}</h4>
+        <h4 id="Email">Email: {{ user.email }}</h4>
+        <img id="ProfilePic" src="{{ user.profile.profile_image }}" alt="{{ user }}">
+        <a id="ChangeUserInfo" href="/user/profile/edit/">
+            <button type="button" id = "ChangeUserInfo-btn" class="btn btn-outline-primary">Change User Info</button>
+        </a>
+        <a id="ChangePassWord" href="/user/change-password">
+            <button type="button" id = "ChangePassword-btn" class="btn btn-outline-primary">Change Password</button>
+        </a>
 
+        <a id="ChangeProfilePic" href="/user/profile/edit/picture/">
+            <button type="button" id = "ChangePassword-btn" class="btn btn-outline-primary">Change Profile Picture</button>
+        </a>
 
+    </div>
 {% endblock %}
