@@ -16,13 +16,6 @@
 }
 
 
-.ItemImg{
-    height: 140px;
-    width: 125px;
-    margin-left: 15px;
-    text-align: center;
-}
-
 .SingleItem .ItemImg{
     max-height: 140px;
     max-width: 160px;

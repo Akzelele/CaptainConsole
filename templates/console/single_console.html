@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}
-    <div class="ConsoleDetails">
-            <div class="ConsoleImages">
-                {% for console_image in console.consoleimage_set.all %}
-                    <a class="ConsoleDetailsPageImages">
-                        <img src="{{ console_image.image }}" class="ConsoleImage"/>
-                    </a>
-                {% endfor %}
-            </div>
+    {% block content %}
+        <div class="items">
+        {% for item in items%}
+            {% if item.console == console %}
+                       {% include 'item/single_item.html' with item=item %}
+            {% endif %}
+        {% endfor %}
         </div>
-{% endblock %}
+    {% endblock %}

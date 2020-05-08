@@ -10,6 +10,7 @@ def build_context():
         'manufacturers': Manufacturer.objects.all().order_by('name')
     }
 
+
 def build_item_context(id):
     return {
         'item': get_object_or_404(Item, pk=id),
@@ -17,9 +18,11 @@ def build_item_context(id):
         'manufacturers': Manufacturer.objects.all().order_by('name')
     }
 
+
 def build_console_context(id):
     return {
         'console': get_object_or_404(Console, pk=id),
         'consoles': Console.objects.all().order_by('name'),
-        'manufacturers': Manufacturer.objects.all().order_by('name')
+        'manufacturers': Manufacturer.objects.all().order_by('name'),
+        'items': Item.objects.all().order_by('name')
     }
