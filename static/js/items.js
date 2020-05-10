@@ -2,19 +2,24 @@ $(document).ready(function() {
     $('#search-btn').on('click', function(e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
+        console.log(searchText)
         $.ajax({
             url: '/items?search_filter=' + searchText,
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
+
                     return `<div class="SingleItem">
                                 <a href="/items/${d.id}">
                                     <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
                                     <span id="Caption">${ d.name }</span>
                                 </a>
                                 <p id="ItemPrice">${d.price}</p>
-                                <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+                                <div class="CartButton" id=${d.id}>
+                                    <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
                             </div>`
+
                     //TODO:order by name
                 })
                 $('.items').html(newHtml.join(''));
@@ -24,5 +29,33 @@ $(document).ready(function() {
                 console.error();
             }
         })
+    });
+
+    $(document).on('click','.CartButton', function(e) {
+        e.preventDefault();
+        var cart_item_id = e.target.parentElement.id
+        var item_storage = localStorage.getItem(cart_item_id)
+
+        if (item_storage === null){
+            localStorage.setItem(cart_item_id, 1)
+        }
+        else{
+            item_storage++;
+            localStorage.setItem(cart_item_id,item_storage)
+        }
+        alert("item added to cart")
+    });
+
+    $(document).on('click','#Cart', function(e) {
+        e.preventDefault();
+        var item_storage = Object.entries(localStorage)
+        console.log(item_storage)
+        console.log(item_storage)
+
+        var i;
+        for (i = 0; i<item_storage.length; i++){
+            console.log(item_storage[i])
+        }
+
     });
 });
