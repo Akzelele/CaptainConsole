@@ -9,12 +9,12 @@ $(document).ready(function() {
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
 
-                    return `<div class="SingleItem">
+                    return `<div class="SingleItem" item-category = ${d.category}>
                                 <a href="/items/${d.id}">
                                     <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
-                                    <span id="Caption">${ d.name }</span>
+                                    <span class="Caption">${ d.name }</span>
                                 </a>
-                                <p id="ItemPrice">${d.price}</p>
+                                <p class="ItemPrice">${d.price}</p>
                                 <div class="CartButton" id=${d.id}>
                                     <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
                                 </div>
