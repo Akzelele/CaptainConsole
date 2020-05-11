@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
     {% block content %}
         <div class="FilterButtons">
-        <a class="btn btn-primary" href="#" role="button">Games</a>
-        <a class="btn btn-primary" href="#" role="button">Consoles</a>
-        <a class="btn btn-primary" href="#" role="button">Controllers</a>
-        <a class="btn btn-primary" href="#" role="button">Other</a>
+        <a class="filterbtn active btn btn-primary"  href="#" role="button" data-filter="all">Show All</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Game">Games</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Console">Consoles</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Controller" >Controllers</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Accessory">Other</a>
         </div>
         <div class="items">
         {% for item in items%}

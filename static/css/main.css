@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap:wrap;
     align-content: flex-start ;
-
 }
 .SingleItem {
     background-color: lavender;
@@ -24,13 +23,13 @@
     margin-top: 10px;
 }
 
-.SingleItem #ItemPrice{
+.SingleItem .ItemPrice{
     display:block;
     text-align: center;
     margin-bottom: 7px;
 }
 
-.SingleItem #Caption{
+.SingleItem .Caption{
     display: block;
     text-align: center;
 }
@@ -39,11 +38,18 @@
 
 }
 
-
-
-
 .Caption {
     display: block;
+}
+
+.FilterButtons{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.filterbtn{
+    margin: 10px;
 }
 
 .navbar{
@@ -114,9 +120,33 @@
     margin-top: auto;
 }
 
+@keyframes zoom-in {
+  0% {
+   transform: scale(.1);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes rotate-right {
+  0% {
+    transform: translate(-100%) rotate(-100deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.is-animated {
+  //animation: .6s zoom-in;
+  //animation: .4s rotate-right;
+}
+
 .ItemPrice{
     height:20px;
 }
+
 
 #AddToCartButton{
     display: block;

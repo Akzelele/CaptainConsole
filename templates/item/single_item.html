@@ -1,9 +1,9 @@
-<div class="SingleItem">
+<div class="SingleItem" item-category = {{ item.category }}>
     <a href = "/items/{{ item.id }}">
         <img class="ItemImg" src="{{ item.itemimage_set.first }}" alt="{{ item.name }} image" />
     </a>
-    <span id="Caption">{{ item.name }}</span>
-    <p id="ItemPrice">$ {{ item.price }}</p>
+    <span class="Caption">{{ item.name }}</span>
+    <p class="ItemPrice">$ {{ item.price }}</p>
     <div class="CartButton" id="{{item.id}}">
         <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
     </div>

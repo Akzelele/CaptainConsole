@@ -58,4 +58,36 @@ $(document).ready(function() {
         }
 
     });
+
+
+    $(document).ready(function(e) {
+        var $filters = $('.FilterButtons [data-filter]'),
+            $items = $('.items [item-category]');
+
+
+        $filters.on('click', function(e) {
+          e.preventDefault();
+          var $this = $(this);
+
+          $filters.removeClass('active');
+          $this.addClass('active');
+
+          var $filterColor = $this.attr('data-filter');
+
+          if ($filterColor == 'all') {
+            $items.removeClass('is-animated')
+
+              .hide().promise().done(function() {
+                $items.addClass('is-animated').fadeIn(50);
+              });
+          } else {
+            $items.removeClass('is-animated')
+              .fadeOut(50).promise().done(function() {
+                $items.filter('[item-category = "' + $filterColor + '"]')
+                  .addClass('is-animated').fadeIn(50);
+              });
+          }
+        })(jQuery);
+    });
+
 });
