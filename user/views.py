@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
-from user.forms.profile_form import ProfileForm, EditProfileForm
+from user.forms.profile_form import ProfileForm, EditProfileForm, RegistrationForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from user.models import Profile
@@ -9,12 +9,12 @@ from user.models import Profile
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = RegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
-    return render(request, 'user/register.html' , {
-        'form': UserCreationForm()
+    return render(request, 'user/register.html', {
+        'form': RegistrationForm()
     })
 
 def profile(request):

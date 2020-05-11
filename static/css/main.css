@@ -89,12 +89,14 @@
 }
 
 .ItemRightSide{
+    margin: 20px;
     display: flex;
     flex-wrap: wrap;
     width: 400px;
 }
 
 .ItemPicGallery{
+    margin: 20px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 150px;
@@ -182,3 +184,11 @@
     margin:15px;
 }
 
+.ItemPicGallery .ItemImg{
+    max-height: 220px;
+    max-width: 210px;
+}
+
+.ItemImg:hover{
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
