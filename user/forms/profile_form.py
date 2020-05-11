@@ -29,7 +29,8 @@ class EditProfileForm(UserChangeForm):
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+
+    email = forms.EmailField()
 
     class Meta:
         model = User
@@ -42,13 +43,7 @@ class RegistrationForm(UserCreationForm):
             'password2'
         )
 
-    def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.email = self.cleaned_data['email']
 
-        if commit:
-            user.save()
 
-        return user
+
+

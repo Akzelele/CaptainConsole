@@ -9,17 +9,23 @@ from user.models import Profile
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(data=request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Welcome Aboard {username}!')
             return redirect('login')
-    return render(request, 'user/register.html', {
-        'form': RegistrationForm()
-    })
+
+    else:
+        form = RegistrationForm()
+
+    return render(request, 'user/register.html', {'form':form})
+
 
 def profile(request):
     args = {'user': request.user}
     return render(request, 'user/profile.html', args)
+
 
 def edit_profile(request):
     if request.method == 'POST':
