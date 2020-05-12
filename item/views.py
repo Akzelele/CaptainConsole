@@ -15,6 +15,37 @@ def index(request):
             'firstImage': x.itemimage_set.first().image
         } for x in Item.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': items})
+
+    if 'sort_filter' in request.GET:
+        sort_filter = request.GET['sort_filter']
+
+        if sort_filter == 'name':
+            items = [{
+                'id': x.id,
+                'name': x.name,
+                'price': x.price,
+                'firstImage': x.itemimage_set.first().image
+            } for x in Item.objects.all().order_by('name')]
+            return JsonResponse({'data': items})
+
+        if sort_filter == 'pricelhbtn':
+            items = [{
+                'id': x.id,
+                'name': x.name,
+                'price': x.price,
+                'firstImage': x.itemimage_set.first().image
+            } for x in Item.objects.all().order_by('price')]
+            return JsonResponse({'data': items})
+
+        if sort_filter == 'pricehlbtn':
+            items = [{
+                'id': x.id,
+                'name': x.name,
+                'price': x.price,
+                'firstImage': x.itemimage_set.first().image
+            } for x in Item.objects.all().order_by('-price')]
+            return JsonResponse({'data': items})
+
     context = build_context()
     return render(request, 'item/index.html', context)
 

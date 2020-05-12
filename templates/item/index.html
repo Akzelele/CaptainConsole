@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
     {% block content %}
+        <div class ="input-group">
+            <input type="search" class="form-control" id="search-box" placeholder="Enter search here.." />
+            <div class="input-group-btn">
+                <button type="button" id="search-btn" class="btn btn-default">Search</button>
+            </div>
+            <div class="SortButtons">
+                      <a class="sortbtn btn btn-primary" id="namebtn" role="button" href="#" filterer="name">Sort by name</a>
+                      <a class="sortbtn btn btn-primary" id="pricelhbtn" role="button" href="#" filterer="price">Sort by price low-high</a>
+                      <a class="sortbtn btn btn-primary" id="pricehlbtn" role="button" href="#" filterer="-price">Sort by price high-low</a>
+            </div>
+        </div>
         <div class="items">
         {% for item in items %}
             {% include 'item/single_item.html' with item=item %}

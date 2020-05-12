@@ -19,8 +19,6 @@ $(document).ready(function() {
                                     <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
                                 </div>
                             </div>`
-
-                    //TODO:order by name
                 })
                 $('.items').html(newHtml.join(''));
                 $('#search-box').val('');
@@ -91,7 +89,6 @@ $(document).ready(function() {
         var $filters = $('.FilterButtons [data-filter]'),
             $items = $('.items [item-category]');
 
-
         $filters.on('click', function(e) {
           e.preventDefault();
           var $this = $(this);
@@ -118,3 +115,94 @@ $(document).ready(function() {
     });
 
 });
+
+$(document).ready(function(e) {
+
+    $('#namebtn').on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: '/items?sort_filter=' + 'name',
+            type: 'GET',
+            success: function (resp) {
+                var newHtml = resp.data.map(d => {
+                    return `<div class="SingleItem">
+                                <a href="/items/${d.id}">
+                                    <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
+                                    <span class="Caption">${ d.name }</span>
+                                </a>
+                                <p class="ItemPrice">${d.price}</p>
+                                <div class="CartButton" id=${d.id}>
+                                    <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>`
+                });
+                $('.items').html(newHtml.join(''));
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        })
+    });
+});
+
+$(document).ready(function(e) {
+
+    $('#pricelhbtn').on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: '/items?sort_filter=' + 'pricelhbtn',
+            type: 'GET',
+            success: function (resp) {
+                var newHtml = resp.data.map(d => {
+                    return `<div class="SingleItem">
+                                <a href="/items/${d.id}">
+                                    <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
+                                    <span class="Caption">${ d.name }</span>
+                                </a>
+                                <p class="ItemPrice">${d.price}</p>
+                                <div class="CartButton" id=${d.id}>
+                                    <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>`
+                });
+                $('.items').html(newHtml.join(''));
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        })
+    });
+});
+
+$(document).ready(function(e) {
+
+    $('#pricehlbtn').on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: '/items?sort_filter=' + 'pricehlbtn',
+            type: 'GET',
+            success: function (resp) {
+                var newHtml = resp.data.map(d => {
+                    return `<div class="SingleItem">
+                                <a href="/items/${d.id}">
+                                    <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
+                                    <span class="Caption">${ d.name }</span>
+                                </a>
+                                <p class="ItemPrice">${d.price}</p>
+                                <div class="CartButton" id=${d.id}>
+                                    <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+                                </div>
+                            </div>`
+                });
+                $('.items').html(newHtml.join(''));
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        })
+    });
+});
+
