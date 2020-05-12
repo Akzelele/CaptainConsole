@@ -1,6 +1,6 @@
 <div class="SingleItem" item-category = {{ item.category }}>
     <a href = "/items/{{ item.id }}">
-        <img class="ItemImg" src="{{ item.firstImage }}" alt="{{ item.name }} image" />
+        <img class="ItemImg" src="{{ item.itemimage_set.first }}" alt="{{ item.name }} image" />
     </a>
     <span class="Caption">{{ item.name }}</span>
     <p class="ItemPrice">$ {{ item.price }}</p>

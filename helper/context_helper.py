@@ -12,22 +12,18 @@ def build_context():
     for con in consoles:
         for key in manufacturer_dict:
             if con.manufacturer.name == key:
-                manufacturer_dict[key].append([con.id, con.name])
+                manufacturer_dict[key].append([con.id,con.name])
     return {
         'manufacturers': manufacturer_dict
     }
 
-
-def build_item_context():
-    items = [{
-        'id': item.id,
-        'name': item.name,
-        'price': item.price,
-        'firstImage': item.itemimage_set.first(),
-        'category': item.category
-    } for item in Item.objects.all().order_by('name')]
-    return {'items': items}
-
+# def build_item_context():
+#     items = Item.objects.all().order_by('name')
+#     itemlist = []
+#     for item in items:
+#         itemlist.append(item)
+# 
+#     return dict(itemlist)
 
 def build_cart_context():
     return {
