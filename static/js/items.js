@@ -101,7 +101,7 @@ $(document).ready(function() {
 
           var $filterColor = $this.attr('data-filter');
 
-          if ($filterColor == 'all') {
+          if ($filterColor === 'all') {
             $items.removeClass('is-animated')
 
               .hide().promise().done(function() {
@@ -114,7 +114,7 @@ $(document).ready(function() {
                   .addClass('is-animated').fadeIn(50);
               });
           }
-        })(jQuery);
-    });
+        });
+    })(jQuery);
 
 });
