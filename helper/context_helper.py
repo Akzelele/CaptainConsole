@@ -33,12 +33,12 @@ def build_cart_context():
     }
 
 
-# def build_item_context(id):
-#     return {
-#         'item': get_object_or_404(Item, pk=id),
-#         'consoles': Console.objects.all().order_by('name'),
-#         'manufacturers': Manufacturer.objects.all().order_by('name')
-#     }
+def build_item_context(id):
+    return {
+        'item': get_object_or_404(Item, pk=id),
+        'consoles': Console.objects.all().order_by('name'),
+        'manufacturers': Manufacturer.objects.all().order_by('name')
+    }
 
 
 def build_console_context(id):
