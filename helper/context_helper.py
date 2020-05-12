@@ -4,26 +4,11 @@ from django.shortcuts import get_object_or_404
 
 
 def build_context():
-    consoles = Console.objects.all().order_by('name')
-    manufacturers = Manufacturer.objects.all().order_by('name')
-    manufacturer_dict = {}
-    for man in manufacturers:
-        manufacturer_dict[man.name] = []
-    for con in consoles:
-        for key in manufacturer_dict:
-            if con.manufacturer.name == key:
-                manufacturer_dict[key].append([con.id,con.name])
     return {
-        'manufacturers': manufacturer_dict
+        'consoles': Console.objects.all().order_by('name'),
+        'items': Item.objects.all().order_by('name'),
+        'manufacturers': Manufacturer.objects.all().order_by('name')
     }
-
-# def build_item_context():
-#     items = Item.objects.all().order_by('name')
-#     itemlist = []
-#     for item in items:
-#         itemlist.append(item)
-# 
-#     return dict(itemlist)
 
 def build_cart_context():
     return {

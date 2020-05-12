@@ -15,7 +15,7 @@ def index(request):
             'firstImage': x.itemimage_set.first().image
         } for x in Item.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': items})
-    context = build_item_context()
+    context = build_context()
     return render(request, 'item/index.html', context)
 
 

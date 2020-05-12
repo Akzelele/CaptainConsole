@@ -9,15 +9,17 @@
 
     <div class="collapse navbar-collapse row" id="navbarSupportedContent" >
         <ul class="navbar-nav mr-auto">
-            {% for key,value in manufacturers.items %}
+            {% for manufacturer in manufacturers %}
                 <li class="nav-item dropdown">
                     <a class="nav-link"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{ key }}
+                      {{ manufacturer.name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for val in value %}
-                              <a class="dropdown-item" href="/consoles/{{ val.0 }}"> {{ val.1 }}</a>
-                        {% endfor %}
+                      {% for console in consoles%}
+                          {% if console.manufacturer == manufacturer %}
+                              <a class="dropdown-item" href="/consoles/{{ console.id }}"> {{ console.name }}</a>
+                          {% endif %}
+                      {% endfor %}
                     </div>
                 </li>
             {% endfor %}
