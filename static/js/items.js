@@ -34,29 +34,56 @@ $(document).ready(function() {
     $(document).on('click','.CartButton', function(e) {
         e.preventDefault();
         var cart_item_id = e.target.parentElement.id
-        var item_storage = localStorage.getItem(cart_item_id)
+        var cart_id = "some_cart_key"
+        var item_storage = localStorage.getItem(cart_id)
+        $.ajax({
+            url: '/cart/items',
+            type: 'GET',
+            success: function(resp) {
+                var item_list = JSON.parse(resp);
 
-        if (item_storage === null){
-            localStorage.setItem(cart_item_id, 1)
-        }
-        else{
-            item_storage++;
-            localStorage.setItem(cart_item_id,item_storage)
-        }
-        alert("item added to cart")
-    });
+                // find the cart item object from the list of items we got from the server
+                var cart_item_object = item_list.find(function (item){
+                    return item.pk == cart_item_id;
+                })
+                //if the cart does not exist, then init cart and add item to it
+                if (item_storage === null){
+                    item_storage = []
+                    cart_item_object.fields.quantity = 1;
+                    item_storage.push(cart_item_object)
+                    item_storage = JSON.stringify(item_storage);
+                    localStorage.setItem(cart_id, item_storage);
+                }
+                else{
+                    item_storage = JSON.parse(item_storage);
+                    var not_in_storage = true
+                    var i;
+                    for (i = 0; i < item_storage.length; i++) {
+                        if (item_storage[i].pk == cart_item_object.pk){
+                            var new_item_object = item_storage[i];
+                            new_item_object.fields.quantity++;
+                            not_in_storage = false
+                            item_storage.splice(i, 1, new_item_object)
+                            item_storage = JSON.stringify(item_storage);
+                            localStorage.setItem(cart_id, item_storage);
+                            }
+                        }
 
-    $(document).on('click','#Cart', function(e) {
-        e.preventDefault();
-        var item_storage = Object.entries(localStorage)
-        console.log(item_storage)
-        console.log(item_storage)
+                    // if the cart exists and the item is not in the cart, then create instance in cart
+                    if (not_in_storage == true){
+                        cart_item_object.fields.quantity = 1;
+                        item_storage.push(cart_item_object)
+                        item_storage = JSON.stringify(item_storage);
+                        localStorage.setItem(cart_id, item_storage);
+                        }
+                    }
 
-        var i;
-        for (i = 0; i<item_storage.length; i++){
-            console.log(item_storage[i])
-        }
-
+                alert("item added to cart")
+            },
+            error: function(xhr,status,error) {
+                console.error();
+            }
+        })
     });
 
 
