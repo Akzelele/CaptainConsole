@@ -10,9 +10,9 @@
     function get_total(cart_list){
         var total = 0;
         for (i=0; i<cart_list.length; i++){
-            total += cart_list[i].fields.price
+            total += cart_list[i].fields.price * cart_list[i].fields.quantity
         }
-        return total
+        return total.toFixed(2)
     }
     </script>
 
@@ -44,7 +44,7 @@
     {% endfor %}
     <li class="list-group-item d-flex justify-content-between">
         <span>Total (USD)</span>
-        <strong> <p id="total"> </strong>
+        <strong> <p id="total"></strong>
     </li>
     </ul>
 </div>

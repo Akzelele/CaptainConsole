@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from helper.context_helper import *
 from item.models import Item, ItemImage
 from django.core.serializers import serialize
-
+from .forms import ContactForm
+from django.shortcuts import redirect
 
 def index(request):
     context = build_cart_context()
@@ -18,4 +19,13 @@ def post_item_list(request):
 
 
 def checkout_view(request):
-    return render(request, "cart/checkout.html")
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+
+            print(first_name)
+            return redirect('cart/checkout')
+
+    form = ContactForm()
+    return render(request, "cart/contactform.html", {'form': form})
