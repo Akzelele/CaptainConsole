@@ -8,6 +8,7 @@
         <h4 id="UserInfo">Last Name: {{ user.last_name }}</h4>
         <h4 id="UserInfo">Email: {{ user.email }}</h4>
         <img id="ProfilePic" src="{{ user.profile.profile_image }}" alt="{{ user }}">
+
         <a id="ProfileInfo-btn" href="/user/profile/edit/">
             <button type="button" id = "ChangeUserInfo-btn" class="btn btn-outline-primary">Change User Info</button>
         </a>
@@ -17,6 +18,10 @@
 
         <a id="ProfileInfo-btn" href="/user/profile/edit/picture/">
             <button type="button" id = "ChangePassword-btn" class="btn btn-outline-primary">Change Profile Picture</button>
+        </a>
+
+         <a id="ProfileInfo-btn" href="/user/profile/history">
+            <button type="button" id = "SearchHistory-btn" class="btn btn-outline-primary">View Search History</button>
         </a>
 
     </div>
