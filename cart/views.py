@@ -45,5 +45,4 @@ def review_view(request):
     context = {
         'contact_info': request.session['contact_info'],
         'payment_info': request.session['payment_info']}
-
     return render(request, 'cart/review.html', context)

@@ -16,7 +16,6 @@
         var mywrapper = document.createElement('div');
         var child = `<div class="CartItem">
                     <a href="/items/${d.pk}">
-
                         <span class="Caption">${ d.fields.name }</span>
                     </a>
                     <p class="ItemPrice">${d.fields.price}</p>
@@ -34,7 +33,6 @@
                     <div class="delete_item_button" id=${d.pk}>
                         <button type="button" class="btn btn-outline-danger">Delete item</button>
                     </div>
-
                 </div>`
         mywrapper.innerHTML= child;
         var div = mywrapper.firstChild;
