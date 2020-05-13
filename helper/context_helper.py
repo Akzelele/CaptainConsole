@@ -1,13 +1,14 @@
 from console.models import Console, Manufacturer
-from item.models import Item
+from item.models import Item, ItemImage
 from django.shortcuts import get_object_or_404
 
 
 def build_context():
     return {
-        'consoles': Console.objects.all(),
-        'items': Item.objects.all(),
-        'manufacturers': Manufacturer.objects.all()
+        'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
+        'consoles': Console.objects.all().order_by('name'),
+        'manufacturers': Manufacturer.objects.all().order_by('name'),
+        'images': ItemImage.objects.values_list().all()
     }
 
 
