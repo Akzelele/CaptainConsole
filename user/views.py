@@ -33,7 +33,8 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
-            return redirect(profile)
+            messages.success(request, f'Profile edited successfully!' )
+            return redirect('profile')
 
     else:
         form = EditProfileForm(instance=request.user)
@@ -47,8 +48,8 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
+            messages.success(request, f'Your password was successfully updated!')
+            return redirect('profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
@@ -56,6 +57,7 @@ def change_password(request):
     return render(request, 'user/change_password.html', {
         'form': form
     })
+
 def edit_profile_picture(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
@@ -64,6 +66,7 @@ def edit_profile_picture(request):
             profile=form.save(commit=False)
             profile.user = request.user
             profile.save()
+            messages.success(f'Profile picture changed successfully!')
             return redirect('profile')
     return render(request, 'user/change_profile_picture.html', {
         'form': ProfileForm(instance=profile)
