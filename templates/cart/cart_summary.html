@@ -1,10 +1,39 @@
 <div class="col-md-12 mb-4">
+
+<script>
+    function load_cart(cart_key){
+        var cart_list = localStorage.getItem(cart_key);
+        cart_list = JSON.parse(cart_list);
+        return cart_list
+    }
+
+    function get_total(cart_list){
+        var total = 0;
+        for (i=0; i<cart_list.length; i++){
+            total += cart_list[i].fields.price
+        }
+        return total
+    }
+    </script>
+
+    <script>
+            var cart_key = 'some_cart_key';
+            window.addEventListener('DOMContentLoaded', (event) => {
+            var customer_cart = load_cart(cart_key);
+            total = get_total(customer_cart);
+            console.log(total);
+            document.getElementById('total').innerHTML = total;
+            console.log(customer_cart)
+        });
+
+    </script>
+
     <h4 class="d-flex justify-content-between align-items-center mb-3">
     <span class="text-muted">Your cart</span>
     <span class="badge badge-secondary badge-pill">{{ order.items.count }}</span>
     </h4>
     <ul class="list-group mb-3 z-depth-1">
-    {% for order_item in order.items.all %}
+    {% for item in customer_cart %}
     <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
         <h6 class="my-0">{{ order_item.quantity }} x {{ order_item.item.title}}</h6>
@@ -13,17 +42,9 @@
         <span class="text-muted">${{ order_item.get_final_price }}</span>
     </li>
     {% endfor %}
-    {% if order.coupon %}
-    <li class="list-group-item d-flex justify-content-between bg-light">
-        <div class="text-success">
-        <h6 class="my-0">Promo code</h6>
-        <small>{{ order.coupon.code }}</small>
-        </div>
-        <span class="text-success">-${{ order.coupon.amount }}</span>
-    </li>
-    {% endif %}
     <li class="list-group-item d-flex justify-content-between">
         <span>Total (USD)</span>
-        <strong>${{ order.get_total }}</strong>
+        <strong> <p id="total"> </strong>
     </li>
     </ul>
+</div>
