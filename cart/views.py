@@ -25,7 +25,7 @@ def checkout_view(request):
             first_name = form.cleaned_data['first_name']
 
             print(first_name)
-            return redirect('cart/checkout')
+            return redirect('checkout_view')
 
     form = ContactForm()
     return render(request, "cart/contactform.html", {'form': form})

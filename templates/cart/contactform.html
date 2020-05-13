@@ -2,15 +2,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <body>
-        <form action="POST">
+<div class="content-section">
+        <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form|crispy }}
             <button type="submit">Continue to payment</button>
     </form>
 
     <div class="col-md-4 mb-4">
         {% include "cart/cart_summary.html" %}
     </div>
-    </body>
+</div>
 {% endblock content %}
