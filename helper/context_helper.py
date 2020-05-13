@@ -12,9 +12,7 @@ def build_context():
 
 def build_cart_context():
     return {
-        'consoles': Console.objects.all().order_by('name'),
-        'items': Item.objects.all().order_by('id'),
-        'manufacturers': Manufacturer.objects.all().order_by('name')
+        'items': Item.objects.all().order_by('id')
     }
 
 

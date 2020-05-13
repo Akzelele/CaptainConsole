@@ -13,15 +13,17 @@
 <div class="PageContent">
     {% include 'navigation.html' %}
         <div class="container">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-            {% block content %}
-            {% endblock %}
+            <div class="inner_container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
     {% include 'footer.html' %}
 </div>

@@ -8,7 +8,7 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-
+                    console.log(d)
                     return `<div class="SingleItem" item-category = ${d.category}>
                                 <a href="/items/${d.id}">
                                     <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
@@ -39,7 +39,6 @@ $(document).ready(function() {
             type: 'GET',
             success: function(resp) {
                 var item_list = JSON.parse(resp);
-
                 // find the cart item object from the list of items we got from the server
                 var cart_item_object = item_list.find(function (item){
                     return item.pk == cart_item_id;
@@ -64,8 +63,8 @@ $(document).ready(function() {
                             item_storage.splice(i, 1, new_item_object)
                             item_storage = JSON.stringify(item_storage);
                             localStorage.setItem(cart_id, item_storage);
-                            }
                         }
+                    }
 
                     // if the cart exists and the item is not in the cart, then create instance in cart
                     if (not_in_storage == true){
@@ -73,8 +72,8 @@ $(document).ready(function() {
                         item_storage.push(cart_item_object)
                         item_storage = JSON.stringify(item_storage);
                         localStorage.setItem(cart_id, item_storage);
-                        }
                     }
+                }
 
                 alert("item added to cart")
             },
@@ -84,6 +83,67 @@ $(document).ready(function() {
         })
     });
 
+    $(document).on('click','.increase_amount_button', function(e) {
+        var item_id = e.target.parentElement.id;
+        var cart_array = localStorage.getItem("some_cart_key");
+        cart_array = JSON.parse(cart_array);
+
+        var i;
+        //find item in cart and increase amount if id match and then push back on local storage
+        for (i = 0; i < cart_array.length; i++) {
+            if (cart_array[i].pk == item_id){
+                var new_item_object = cart_array[i];
+                new_item_object.fields.quantity++;
+                cart_array.splice(i, 1, new_item_object)
+                cart_array = JSON.stringify(cart_array);
+                localStorage.setItem("some_cart_key", cart_array);
+
+            }
+        }
+        location.reload();
+    });
+
+    $(document).on('click','.decrease_amount_button', function(e) {
+        var item_id = e.target.parentElement.id;
+        var cart_array = localStorage.getItem("some_cart_key");
+        cart_array = JSON.parse(cart_array);
+        var i;
+        //find item in cart and decrease amount if id match and then push back on local storage
+        for (i = 0; i < cart_array.length; i++) {
+            if (cart_array[i].pk == item_id){
+                var new_item_object = cart_array[i];
+                new_item_object.fields.quantity--;
+                if (new_item_object.fields.quantity == 0){
+                    cart_array.splice(i, 1)
+                    cart_array = JSON.stringify(cart_array);
+                    localStorage.setItem("some_cart_key", cart_array);
+                }
+                else{
+                    cart_array.splice(i, 1, new_item_object)
+                    cart_array = JSON.stringify(cart_array);
+                    localStorage.setItem("some_cart_key", cart_array);
+                }
+            }
+        }
+        location.reload();
+    });
+
+    $(document).on('click','.delete_item_button', function(e) {
+        var item_id = e.target.parentElement.id;
+        var cart_array = localStorage.getItem("some_cart_key");
+        cart_array = JSON.parse(cart_array);
+        var i;
+        //find item in cart and decrease amount if id match and then push back on local storage
+        for (i = 0; i < cart_array.length; i++) {
+            if (cart_array[i].pk == item_id){
+                cart_array.splice(i, 1)
+                cart_array = JSON.stringify(cart_array);
+                localStorage.setItem("some_cart_key", cart_array);
+
+            }
+        }
+        location.reload();
+    });
 
     $(document).ready(function(e) {
         var $filters = $('.FilterButtons [data-filter]'),
@@ -205,4 +265,3 @@ $(document).ready(function(e) {
         })
     });
 });
-
