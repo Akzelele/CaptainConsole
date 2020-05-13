@@ -148,6 +148,7 @@ $(document).on('click','.increase_amount_button', function(e) {
     $(document).ready(function() {
         var $filters = $('.FilterButtons [data-filter]'),
             $items = $('.items [item-category]');
+        console.log($('.items [item-category]'))
 
         $filters.on('click', function(e) {
           e.preventDefault();

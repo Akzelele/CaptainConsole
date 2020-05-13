@@ -31,5 +31,6 @@ def build_console_context(id):
         'console': get_object_or_404(Console, pk=id),
         'consoles': Console.objects.all().order_by('name'),
         'manufacturers': Manufacturer.objects.all().order_by('name'),
-        'items': Item.objects.all().order_by('name')
+        'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
+        'images': ItemImage.objects.values_list().all()
     }
