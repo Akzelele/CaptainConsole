@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'console.apps.ConsoleConfig',
     'user.apps.UserConfig',
     'crispy_forms',
-    'django_countries'
+    'django_countries',
+    'cart.apps.CartConfig'
 
 ]
 
