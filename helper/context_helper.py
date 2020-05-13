@@ -5,10 +5,11 @@ from django.shortcuts import get_object_or_404
 
 def build_context():
     return {
-        'consoles': Console.objects.all().order_by('name'),
-        'items': Item.objects.all().order_by('price'),
-        'manufacturers': Manufacturer.objects.all().order_by('name')
+        'consoles': Console.objects.all(),
+        'items': Item.objects.all(),
+        'manufacturers': Manufacturer.objects.all()
     }
+
 
 def build_cart_context():
     return {
