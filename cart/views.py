@@ -13,3 +13,6 @@ def post_item_list(request):
     return render(request,'cart/user_cart.html', {'items': items})
     #svona skilar maður öllum objects
     #{'items': items}
+
+def checkout_view(request):
+    return render(request, 'cart/checkout.html')
