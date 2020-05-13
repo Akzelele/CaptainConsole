@@ -71,3 +71,7 @@ def edit_profile_picture(request):
     return render(request, 'user/change_profile_picture.html', {
         'form': ProfileForm(instance=profile)
     })
+
+
+def search_history(request):
+    return render(request, 'user/search_history.html')
