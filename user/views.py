@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from user.forms.profile_form import ProfileForm, EditProfileForm, RegistrationForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
@@ -19,7 +19,7 @@ def register(request):
     else:
         form = RegistrationForm()
 
-    return render(request, 'user/register.html', {'form':form})
+    return render(request, 'user/register.html', {'form': form})
 
 
 def profile(request):
@@ -33,7 +33,7 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, f'Profile edited successfully!' )
+            messages.success(request, f'Profile edited successfully!')
             return redirect('profile')
 
     else:
@@ -58,12 +58,13 @@ def change_password(request):
         'form': form
     })
 
+
 def edit_profile_picture(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
-            profile=form.save(commit=False)
+            profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
             messages.success(f'Profile picture changed successfully!')

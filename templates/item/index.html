@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="items">
-        {% for item in items %}
-            {% include 'item/single_item.html' with item=item %}
-        {% endfor %}
+            {% for item in items %}
+                {% include 'item/single_item.html' %}
+            {% endfor %}
         </div>
     {% endblock %}

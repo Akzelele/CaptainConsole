@@ -2,15 +2,15 @@
     {% block content %}
         <div class="FilterButtons">
         <a class="filterbtn active btn btn-primary"  href="#" role="button" data-filter="all">Show All</a>
-        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Game">Games</a>
-        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Console">Consoles</a>
-        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Controller" >Controllers</a>
-        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="Accessory">Other</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="1">Games</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="2">Consoles</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="3" >Controllers</a>
+        <a class="filterbtn btn btn-primary" href="#" role="button" data-filter="4">Other</a>
         </div>
         <div class="items">
-        {% for item in items%}
-            {% if item.console == console %}
-                       {% include 'item/single_item.html' with item=item %}
+        {% for item in items %}
+            {% if console.id == item.console %}
+                {% include 'item/single_item.html' with item=item %}
             {% endif %}
         {% endfor %}
         </div>
