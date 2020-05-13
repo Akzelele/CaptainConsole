@@ -43,7 +43,7 @@
     })
         var mywrapper = document.createElement('div');
         var continue_payment_child = `<div class="continue_payment">
-                            <button type="button" class="btn btn-warning">Continue payment</button>
+                            <a href="{% url 'checkout_view' %}" target="_parent"><button type="button" class="btn btn-warning">Checkout</button></a>
                         </div>`
         mywrapper.innerHTML= continue_payment_child;
         var div = mywrapper.firstChild;
