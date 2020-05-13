@@ -3,8 +3,9 @@ from django.http import JsonResponse
 from helper.context_helper import *
 from item.models import Item, ItemImage
 from django.core.serializers import serialize
-from .forms import ContactForm
+from .forms import ContactForm, PaymentForm
 from django.shortcuts import redirect
+
 
 def index(request):
     context = build_cart_context()
@@ -18,14 +19,31 @@ def post_item_list(request):
     # {'items': items}
 
 
-def checkout_view(request):
+def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
+            request.session['contact_info'] = form.data
+            return redirect(payment_view)
+    else:
+        form = ContactForm()
+    return render(request, 'cart/contactform.html', {'form': form})
 
-            print(first_name)
-            return redirect('checkout_view')
 
-    form = ContactForm()
-    return render(request, "cart/contactform.html", {'form': form})
+def payment_view(request):
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            request.session['payment_info'] = form.data
+            return redirect(review_view)
+    else:
+        form = PaymentForm()
+    return render(request, 'cart/paymentform.html', {'form': form})
+
+
+def review_view(request):
+    context = {
+        'contact_info': request.session['contact_info'],
+        'payment_info': request.session['payment_info']}
+
+    return render(request, 'cart/review.html', context)

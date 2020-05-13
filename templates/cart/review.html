@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-section">
+        <form method="POST">
+        {% csrf_token %}
+{{ contact_info.first_name }}
+            {{ payment_info.card_number }}
+            <button type="submit">CONFIRMERINO</button>
+    </form>
+
+    <div class="col-md-4 mb-4">
+        {% include "cart/cart_summary.html" %}
+    </div>
+</div>
+{% endblock content %}
