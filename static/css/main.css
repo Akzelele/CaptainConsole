@@ -20,8 +20,7 @@
     max-height: 140px;
     max-width: 160px;
     display:block;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px auto auto;
 }
 
 .SingleItem .ItemPrice{
@@ -58,10 +57,8 @@
 }
 
 .ItemDetailsPage{
-    margin: auto;
     border: black 1px solid;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 20px auto 10px;
     background-color: lightgray;
     max-width: 800px;
 
@@ -302,10 +299,26 @@
 }
 
 .ItemImg:hover{
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }
+.content-section{
 
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center ;
+    justify-content: center;
 
+}
+.carter{
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.info-box{
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
 
 .CartItem {
     display: flex;
