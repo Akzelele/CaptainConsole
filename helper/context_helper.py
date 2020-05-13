@@ -4,12 +4,25 @@ from django.shortcuts import get_object_or_404
 
 
 def build_context():
+    manufacturer_dict = build_navbar_context()
     return {
         'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
-        'consoles': Console.objects.all().order_by('name'),
-        'manufacturers': Manufacturer.objects.all().order_by('name'),
+        'manufacturers': manufacturer_dict,
         'images': ItemImage.objects.values_list().all()
     }
+
+
+def build_navbar_context():
+    manufacturers = Manufacturer.objects.all().order_by('name')
+    consoles = Console.objects.all().order_by('name')
+    manufacturer_dict = {}
+    for man in manufacturers:
+        manufacturer_dict[man.name] = []
+    for con in consoles:
+        for key in manufacturer_dict:
+            if con.manufacturer.name == key:
+                manufacturer_dict[key].append([con.id, con.name])
+    return manufacturer_dict
 
 
 def build_cart_context():
@@ -27,10 +40,10 @@ def build_item_context(id):
 
 
 def build_console_context(id):
+    manufacturer_dict = build_navbar_context()
     return {
         'console': get_object_or_404(Console, pk=id),
-        'consoles': Console.objects.all().order_by('name'),
-        'manufacturers': Manufacturer.objects.all().order_by('name'),
+        'manufacturers': manufacturer_dict,
         'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
         'images': ItemImage.objects.values_list().all()
     }
