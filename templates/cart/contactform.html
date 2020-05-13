@@ -9,12 +9,12 @@
         <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
+        <button class="btn-warning" type="submit">Continue to payment</button>
 
     </form>
 </div>
     <div class="info-box">
         {% include "cart/cart_summary.html" %}
-        <button class="btn-warning" type="submit">Continue to payment</button>
     </div>
 </div>
 {% endblock content %}

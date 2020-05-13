@@ -5,8 +5,8 @@
 <div class="content-section">
         <form method="POST">
         {% csrf_token %}
-    <div class="order_info_container">
-        <div class="contact-info col-md-4">
+    <div class="content-section">
+        <div class="info-box">
             <p>First Name: {{ contact_info.first_name }}</p>
             <p>Last Name:{{ contact_info.last_name }}</p>
             <p>Email: {{ contact_info.email }}</p>
@@ -16,14 +16,14 @@
             <p>City {{ contact_info.city }}</p>
             <p>Zip: {{ contact_info.zip}}</p>
         </div>
-        <div class="payment-info col-md-4">
+        <div class="info-box">
             <p>Cardholder name: {{ payment_info.cardholder_name }}</p>
             <p>Card Number: {{ payment_info.card_number }}</p>
             <p>Expiration date: {{ payment_info.expiration_month }}/{{ payment_info.expiration_year|slice:"-2:"}}</p>
             <p>CVC: {{ payment_info.CVC }}</p>
         </div>
     </div>
-        <button type="submit">CONFIRMERINO</button>
+        <button class="btn-warning" type="submit">CONFIRMERINO</button>
     </form>
 
     <div class="col-md-4 mb-4">
