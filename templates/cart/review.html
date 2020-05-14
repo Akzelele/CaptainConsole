@@ -22,8 +22,8 @@
             <p>Expiration date: {{ payment_info.expiration_month }}/{{ payment_info.expiration_year|slice:"-2:"}}</p>
             <p>CVC: {{ payment_info.CVC }}</p>
         </div>
-        <div class="info-box" id="cart_summary">
-            {% include "cart/cart_summary.html" %}
+            <div class="info-box" id="cart_summary">
+                {% include "cart/order_completion.html" %}
             <div class="inner_cart_container"></div>
         </div>
     </div>

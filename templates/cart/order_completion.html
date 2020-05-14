@@ -6,11 +6,12 @@
 <script>
     function load_cart(cart_key){
         var cart_list = localStorage.getItem(cart_key);
+        setCookie(cart_key, cart_list)
         cart_list = JSON.parse(cart_list);
         return cart_list
     }
 
-    function generate_checkout_cart(cart_list) {
+    function generate_checkout_cart(cart_list,cart_key) {
 
         $("div.inner_cart_container").replaceWith(`<div id='cart_summary'></div>`);
         cart_list.map(d => {
@@ -27,6 +28,7 @@
             var div = mywrapper.firstChild;
             document.getElementById("cart_summary").appendChild(div);
 
+
         });
     };
 
@@ -38,15 +40,20 @@
         return total.toFixed(2)
     }
 
+    function setCookie(ItemCartKey, items) {
+        document.cookie = ItemCartKey + "=" + items;
+    }
+
     </script>
 
     <script>
             var cart_key = 'some_cart_key';
             window.addEventListener('DOMContentLoaded', (event) => {
             var customer_cart = load_cart(cart_key);
-            generate_checkout_cart(customer_cart);
+            generate_checkout_cart(customer_cart,cart_key);
             total = get_total(customer_cart);
             document.getElementById('total').innerHTML = total;
+
         });
 
     </script>

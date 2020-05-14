@@ -49,6 +49,10 @@ def review_view(request):
         'payment_info': request.session['payment_info']}
 
     if request.method == 'POST':
+        items = request.COOKIES.get('some_cart_key')
+        print(items)
+        print(type(items))
+
         item = Item.objects.get(pk=1)
         OrderItem.objects.create(item=item, quantity=2)
         items_id = OrderItem.objects.get(pk=1)
