@@ -44,6 +44,10 @@
         document.cookie = ItemCartKey + "=" + items;
     }
 
+    function EmptyCartLocalStorage(CartKey) {
+        localStorage.removeItem(CartKey);
+    }
+
     </script>
 
     <script>
@@ -53,7 +57,7 @@
             generate_checkout_cart(customer_cart,cart_key);
             total = get_total(customer_cart);
             document.getElementById('total').innerHTML = total;
-
+            EmptyCartLocalStorage(cart_key)
         });
 
     </script>
