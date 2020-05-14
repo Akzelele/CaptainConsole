@@ -156,9 +156,9 @@ $(document).on('click','.increase_amount_button', function(e) {
           $filters.removeClass('active');
           $this.addClass('active');
 
-          var $filterColor = $this.attr('data-filter');
+          var $filterCat = $this.attr('data-filter');
 
-          if ($filterColor === 'all') {
+          if ($filterCat === 'all') {
             $items.removeClass('is-animated')
 
               .hide().promise().done(function() {
@@ -167,7 +167,7 @@ $(document).on('click','.increase_amount_button', function(e) {
           } else {
             $items.removeClass('is-animated')
               .fadeOut(50).promise().done(function() {
-                $items.filter('[item-category = "' + $filterColor + '"]')
+                $items.filter('[item-category = "' + $filterCat + '"]')
                   .addClass('is-animated').fadeIn(50);
               });
           }
