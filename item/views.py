@@ -4,8 +4,9 @@ from helper.context_helper import build_context, build_item_context
 from item.models import Item, ItemImage
 import operator
 
+def duplicate_remover(d):
+  return [i for n, i in enumerate(d) if i not in d[n + 1:]]
 
-# Create your views here.
 context = build_context()
 def index(request):
     global context
@@ -30,6 +31,7 @@ def index(request):
                 'firstImage': str(ItemImage.objects.values_list().filter(item_id=x['id']).first()[1])
             } for x in item]
             items.sort(key=operator.itemgetter('price'), reverse=True)
+            items = duplicate_remover(items)
             return JsonResponse({'data': items})
 
 
@@ -41,6 +43,7 @@ def index(request):
                 'firstImage': str(ItemImage.objects.values_list().filter(item_id=x['id']).first()[1])
             } for x in item]
             items.sort(key=operator.itemgetter(sort_filter))
+            items = duplicate_remover(items)
             return JsonResponse({'data': items})
     return render(request, 'item/index.html', context)
 
