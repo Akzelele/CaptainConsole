@@ -7,7 +7,7 @@ from .forms import ContactForm, PaymentForm
 from .models import Order, OrderItem
 from item.models import Item
 from django.shortcuts import redirect
-import json
+from django.contrib import messages
 
 
 def index(request):
@@ -66,6 +66,7 @@ def review_view(request):
                                                            quantity=quant_list[i],
                                                            order_id_id=order_instance.pk)
 
+        messages.success(request, f'Purchased successfully!')
         return redirect('item-index')
 
     return render(request, 'cart/review.html', context)
