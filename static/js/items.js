@@ -212,7 +212,7 @@ $(document).ready(function(e) {
         e.preventDefault();
 
         $.ajax({
-            url: '/items?sort_filter=' + 'pricelhbtn',
+            url: '/items?sort_filter=' + 'price',
             type: 'GET',
             success: function (resp) {
                 var newHtml = resp.data.map(d => {
@@ -242,7 +242,7 @@ $(document).ready(function(e) {
         e.preventDefault();
 
         $.ajax({
-            url: '/items?sort_filter=' + 'pricehlbtn',
+            url: '/items?sort_filter=' + '-price',
             type: 'GET',
             success: function (resp) {
                 var newHtml = resp.data.map(d => {
