@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from helper.context_helper import build_context, build_item_context
-from item.models import Item
+from item.models import Item, ItemImage
 import operator
 
 
@@ -27,7 +27,7 @@ def index(request):
                 'id': x['id'],
                 'name': x['name'],
                 'price': x['price'],
-                'firstImage': str(Item.objects.get(pk=x['id']).itemimage_set.first())
+                'firstImage': str(ItemImage.objects.values_list().filter(item_id=x['id']).first()[1])
             } for x in item]
             items.sort(key=operator.itemgetter('price'), reverse=True)
             return JsonResponse({'data': items})
@@ -37,7 +37,7 @@ def index(request):
                 'id': x['id'],
                 'name': x['name'],
                 'price': x['price'],
-                'firstImage': str(Item.objects.get(pk=x['id']).itemimage_set.first())
+                'firstImage': str(ItemImage.objects.values_list().filter(item_id=x['id']).first()[1])
             } for x in item]
             items.sort(key=operator.itemgetter(sort_filter))
             return JsonResponse({'data': items})
