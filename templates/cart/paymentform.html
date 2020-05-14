@@ -6,9 +6,11 @@
 <div class="content-section">
 <div class="info-box">
             <h3>Payment information</h3>
+    <div class="paymentForm">
         <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
+    </div>
 <button class="btn-warning" type="submit">Continue to review</button>
     </form>
 </div>

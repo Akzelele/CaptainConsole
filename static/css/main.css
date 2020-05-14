@@ -24,6 +24,27 @@
     margin: auto;
 }
 
+#id_expiration_month{
+    width: 50%;
+    float: left;
+    margin-bottom: 15px;
+
+}
+
+#id_expiration_year{
+    width: 50%;
+    float: left;
+    margin-bottom: 15px;
+
+
+}
+
+.paymentForm{
+    display: flex;
+    align-content: space-around;
+
+}
+
 .SingleItem .ItemImg{
     max-height: 140px;
     max-width: 160px;
@@ -277,6 +298,7 @@
 }
 
 .info-box{
+
     margin: 10px;
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.12);

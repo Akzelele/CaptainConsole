@@ -17,8 +17,6 @@ def index(request):
 def post_item_list(request):
     items = serialize("json", Item.objects.all(), fields=("name", "price"))
     return render(request, "cart/user_cart.html", {"items": items})
-    # svona skilar maður öllum objects
-    # {'items': items}
 
 
 def contact_view(request):
