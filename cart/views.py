@@ -45,5 +45,9 @@ def review_view(request):
     context = {
         'contact_info': request.session['contact_info'],
         'payment_info': request.session['payment_info']}
+    # Objects can be accessed like this:
+    print(context['payment_info']['cardholder_name'], context['contact_info']['country'])
+    #TODO Find a way to access the cart item id and then create object to save to the database
+
 
     return render(request, 'cart/review.html', context)
