@@ -6,7 +6,7 @@ import operator
 
 
 # Create your views here.
-context=None
+context = build_context()
 def index(request):
     global context
     if 'search_filter' in request.GET:
@@ -32,6 +32,7 @@ def index(request):
             items.sort(key=operator.itemgetter('price'), reverse=True)
             return JsonResponse({'data': items})
 
+
         else:
             items = [{
                 'id': x['id'],
@@ -41,8 +42,8 @@ def index(request):
             } for x in item]
             items.sort(key=operator.itemgetter(sort_filter))
             return JsonResponse({'data': items})
-    context = build_context()
     return render(request, 'item/index.html', context)
+
 
 
 def get_item_by_id(request, id):
