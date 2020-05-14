@@ -22,12 +22,16 @@
             <p>Expiration date: {{ payment_info.expiration_month }}/{{ payment_info.expiration_year|slice:"-2:"}}</p>
             <p>CVC: {{ payment_info.CVC }}</p>
         </div>
+        <div class="info-box" id="cart_summary">
+            {% include "cart/cart_summary.html" %}
+            <div class="inner_cart_container"></div>
+        </div>
     </div>
         <button class="btn-warning" type="submit">CONFIRMERINO</button>
     </form>
 
-    <div class="col-md-4 mb-4">
-        {% include "cart/cart_summary.html" %}
+    </div>
+
     </div>
 </div>
 {% endblock content %}
