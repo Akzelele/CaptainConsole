@@ -7,7 +7,7 @@ from .forms import ContactForm, PaymentForm
 from .models import Order, OrderItem
 from item.models import Item
 from django.shortcuts import redirect
-
+import json
 
 def index(request):
     context = build_cart_context()
@@ -46,14 +46,34 @@ def review_view(request):
         'contact_info': request.session['contact_info'],
         'payment_info': request.session['payment_info']}
 
-    if request.method == 'POST':
-        items = request.COOKIES.get('some_cart_key')
-        print(items)
-        print(type(items))
+    items = request.COOKIES.get('some_cart_key')
+    temp_list = items.split('"')
 
-        item = Item.objects.get(pk=1)
-        OrderItem.objects.create(item=item, quantity=2)
-        items_id = OrderItem.objects.get(pk=1)
+    pk_list = []
+    quant_list = []
+# TODO setja þetta í fall eða eitthvað -> ekki fallegt :p
+    for i in range(len(temp_list)):
+        if 'pk' in temp_list[i]:
+            pk_list.append(temp_list[i+1])
+
+        if 'quantity' in temp_list[i]:
+            quant_list.append(temp_list[i+1])
+
+    for i in range(len(pk_list)):
+        pk_list[i] = int(pk_list[i][1::-2])
+
+    for i in range(len(quant_list)):
+        quant_list[i] = int(quant_list[i][1::-4])
+
+    print(quant_list)
+    print(pk_list)
+
+
+
+
+
+    if request.method == 'POST':
+        # Creates and saves the order:
         order_instance = Order.objects.create(first_name=context['contact_info']['first_name'],
                                               last_name=context['contact_info']['last_name'],
                                               email=context['contact_info']['email'],
@@ -61,8 +81,18 @@ def review_view(request):
                                               street_name=context['contact_info']['street_name'],
                                               house_number=context['contact_info']['house_number'],
                                               city=context['contact_info']['city'],
-                                              zip=context['contact_info']['zip'],
-                                              items=items_id)
+                                              zip=context['contact_info']['zip'])
+
+
+
+
+
+        for i in range(len(pk_list)):
+            item = Item.objects.get(pk=pk_list[i])
+            order_item_instance = OrderItem.objects.create(item=item,
+                                                           quantity=quant_list[i],
+                                                           order_id_id=order_instance.pk)
+
         return redirect('item-index')
 
     return render(request, 'cart/review.html', context)
