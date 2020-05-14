@@ -4,6 +4,11 @@
     align-items: center ;
     justify-content: center;
 }
+
+.empty-cart{
+    margin: 50px;
+}
+
 .continue_payment {
     text-align: right;
     margin: 10px;
