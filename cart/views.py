@@ -4,6 +4,8 @@ from helper.context_helper import *
 from item.models import Item, ItemImage
 from django.core.serializers import serialize
 from .forms import ContactForm, PaymentForm
+from .models import Order, OrderItem
+from item.models import Item
 from django.shortcuts import redirect
 
 
@@ -45,9 +47,23 @@ def review_view(request):
     context = {
         'contact_info': request.session['contact_info'],
         'payment_info': request.session['payment_info']}
+
+
+    item = Item.objects.get(pk=1)
+    OrderItem.objects.create(item=item, quantity=2)
+    items_id = OrderItem.objects.get(pk=1)
+    order_instance = Order.objects.create(first_name=context['contact_info']['first_name'],
+                                          last_name=context['contact_info']['last_name'],
+                                          email=context['contact_info']['email'],
+                                          country=context['contact_info']['country'],
+                                          street_name=context['contact_info']['street_name'],
+                                          house_number=context['contact_info']['house_number'],
+                                          city=context['contact_info']['city'],
+                                          zip=context['contact_info']['zip'],
+                                          items=items_id)
     # Objects can be accessed like this:
     print(context['payment_info']['cardholder_name'], context['contact_info']['country'])
-    #TODO Find a way to access the cart item id and then create object to save to the database
-
+    # TODO Find a way to access the cart item id and then create object to save to the database
+    # and remove items from localstorage on buy
 
     return render(request, 'cart/review.html', context)
