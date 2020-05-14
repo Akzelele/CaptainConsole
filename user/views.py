@@ -67,7 +67,7 @@ def edit_profile_picture(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            messages.success(f'Profile picture changed successfully!')
+            messages.success(request, f'Your picture was successfully updated!')
             return redirect('profile')
     return render(request, 'user/change_profile_picture.html', {
         'form': ProfileForm(instance=profile)
