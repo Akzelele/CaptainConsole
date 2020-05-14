@@ -4,6 +4,15 @@
     align-items: center ;
     justify-content: center;
 }
+
+.cart_item_name {
+    width: 40%;
+    margin-left: 20px;
+}
+ .delete_item_button{
+     margin-right: 20px;
+ }
+
 .SingleItem {
     clear:both;
     height : 258px;

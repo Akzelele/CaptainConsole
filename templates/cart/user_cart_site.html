@@ -15,7 +15,7 @@
         console.log(d)
         var mywrapper = document.createElement('div');
         var child = `<div class="CartItem">
-                    <a href="/items/${d.pk}">
+                    <a class="cart_item_name" href="/items/${d.pk}">
                         <span class="Caption">${ d.fields.name }</span>
                     </a>
                     <p class="ItemPrice">${d.fields.price}</p>
