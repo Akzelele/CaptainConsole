@@ -66,7 +66,7 @@ def review_view(request):
             order_item_instance = OrderItem.objects.create(item=item,
                                                            quantity=quant_list[i],
                                                            order_id_id=order_instance.pk)
-
+        # Stores the PK
         request.session['order_id'] = order_instance.pk
         messages.success(request, f'Purchased successfully!')
         return redirect(order_review)
@@ -80,8 +80,11 @@ def order_review(request):
     context = {
         'order_id': request.session['order_id']
     }
-    print(context)
-    return render(request, 'cart/order-review.html')
+
+    if request.method == 'POST':
+        return redirect('/')
+
+    return render(request, 'cart/order-review.html', context)
 
 
 
