@@ -51,4 +51,3 @@ class PaymentForm(forms.Form):
     expiration_year = forms.ChoiceField(choices=YEARS, label="", widget=forms.Select())
     CVC = forms.CharField(label="", widget=forms.NumberInput(attrs={'placeholder': 'CVC'}), max_length=3)
 
-    # widgets numberinput
