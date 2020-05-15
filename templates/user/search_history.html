@@ -4,11 +4,16 @@
     <h1 id="TitleSearch">Search history</h1>
     <div class="Search_history_container">
 
+
+
         <div class="search-content-section">
-            <div class="SearchItemClassHeadlines">
-                <p> <b>DATE</b> </p>
-                <p> <b>ITEM</b> </p>
-            </div>
+            {# if search history exists for the user, generate the headlines for the columns #}
+            {% if search_history %}
+                <div class="SearchItemClassHeadlines">
+                    <p> <b>DATE</b> </p>
+                    <p> <b>ITEM</b> </p>
+                </div>
+            {% endif %}
             {% for searches in search_history %}
             <div class="SearchItemClass">
                 <p class=>{{ searches.visited}}</p>
