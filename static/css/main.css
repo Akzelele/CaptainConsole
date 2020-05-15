@@ -379,8 +379,11 @@ width: auto;
 }
 
 .Search_history_container {
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin: 50px;
+    width: auto;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
 }
 
 .SearchItemClass {
@@ -388,39 +391,29 @@ width: auto;
     display: flex;
     align-self: center;
     flex-direction: row;
-    margin-left: 200px;
-    margin-right: 200px;
-    padding-right: 50px;
-    padding-left: 50px;
     justify-content: space-between;
     background: linear-gradient(#818a91, #818a91) no-repeat center/2px 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.SearchItemClassHeadlines {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    display: flex;
-    flex-direction: row;
-    margin-left: 200px;
-    margin-right: 200px;
-    padding-right: 50px;
-    padding-left: 50px;
-    justify-content: space-between;
-    background: linear-gradient(#818a91, #818a91) no-repeat center/2px 100%;
+.SearchItemClassHeader {
     background-color: lavender;
 }
 
-.DeleteSearchHistoryButtonDiv {
-    margin-left: 600px;
-    right: 200px;
-    margin-top: 15px;
+.search-history-buttons {
+    display: flex;
+    margin-left: auto;
+    float: left;
+
 }
 
-#TitleSearch {
-    text-align: center;
+.history-btn{
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
-#Notificiation {
-    text-align: center;
+#no-history-notification {
     color: indianred;
-
+    float:left
 }
