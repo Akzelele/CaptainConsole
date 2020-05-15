@@ -3,9 +3,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from user.forms.profile_form import ProfileForm, EditProfileForm, RegistrationForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from user.models import Profile, UserSearchHistory, User
+from user.models import Profile
 from user.models import UserSearchHistory
 from helper.context_helper import build_searh_history
+
 
 # Create your views here.
 def register(request):
