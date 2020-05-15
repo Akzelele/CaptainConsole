@@ -60,7 +60,7 @@ def review_view(request):
                                               city=context['contact_info']['city'],
                                               zip=context['contact_info']['zip'])
 
-        # This creates order items the objects
+        # This creates order items  objects
         for i in range(len(pk_list)):
             item = Item.objects.get(pk=pk_list[i])
             order_item_instance = OrderItem.objects.create(item=item,
@@ -85,11 +85,16 @@ def order_review(request):
     print(context)
 
     if request.method == 'POST':
+        # Sends the email
         send_mail(
+            # subject
             'Receipt from Captain Console',
+            # message
             'Thanks for your purchase ' + context['name'] + '!\n' +
             'Your Order Number is ' + str(context['order_id']),
+            # from
             EMAIL_HOST_USER,
+            # to
             [context['email']],
             fail_silently=True
         )
