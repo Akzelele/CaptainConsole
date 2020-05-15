@@ -37,7 +37,7 @@
         document.getElementById("cart_items_div").appendChild(div);
 
     })
-        if (cart_list.length > 0){
+        if (cart_list.length > 0 || cart_list === null){
         var mywrapper = document.createElement('div');
         var continue_payment_child = `<div class="continue_payment">
                             <a href="{% url 'contact_view' %}" target="_parent"><button type="button" class="btn btn-warning">Checkout</button></a>
