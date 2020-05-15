@@ -11,6 +11,8 @@ def duplicate_remover(d):
 
 
 context = build_context()
+
+
 def index(request):
     global context
     if 'search_filter' in request.GET:
@@ -50,7 +52,7 @@ def index(request):
     return render(request, 'item/index.html', context)
 
 
-def get_item_by_id(request, id):
-    item_context = build_item_context(id)
+def get_item_by_id(request, item_id):
+    item_context = build_item_context(item_id)
     create_user_history(request)
     return render(request, 'item/item_details.html', item_context)
