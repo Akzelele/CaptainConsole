@@ -59,7 +59,8 @@ def review_view(request):
                                               house_number=context['contact_info']['house_number'],
                                               city=context['contact_info']['city'],
                                               zip=context['contact_info']['zip'])
-        # This creates the objects
+
+        # This creates order items the objects
         for i in range(len(pk_list)):
             item = Item.objects.get(pk=pk_list[i])
             order_item_instance = OrderItem.objects.create(item=item,
@@ -72,18 +73,17 @@ def review_view(request):
     return render(request, 'cart/review.html', context)
 
 
-
-
 def extract_cookies(request):
+    '''Extracts information from the cookies and returns a string'''
 
     items = request.COOKIES.get('some_cart_key')
-    print(items)
     temp_list = items.split('"')
 
     pk_list = []
     quant_list = []
-    # TODO setja þetta í fall eða eitthvað -> ekki fallegt :p
+
     for i in range(len(temp_list)):
+        # returns the item primary key in a list
         if 'pk' in temp_list[i]:
             pk_list.append(temp_list[i + 1])
 
