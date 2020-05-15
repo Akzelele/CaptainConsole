@@ -9,10 +9,8 @@
     }
 
     function generate_cart(cart_list) {
-    console.log(cart_list)
     $( "div.inner_container" ).replaceWith(`<div id='cart_items_div'></div>`);
     cart_list.map(d => {
-        console.log(d)
         var mywrapper = document.createElement('div');
         var child = `<div class="CartItem">
                     <a class="cart_item_name" href="/items/${d.pk}">

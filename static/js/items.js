@@ -2,13 +2,11 @@ $(document).ready(function() {
     $('#search-btn').on('click', function(e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
-        console.log(searchText)
         $.ajax({
             url: '/items?search_filter=' + searchText,
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    console.log(d)
                     return `<div class="SingleItem" item-category = ${d.category}>
                                 <a href="/items/${d.id}">
                                     <img class="ItemImg" src="${d.firstImage}" alt="${d.name } image"/>
@@ -174,7 +172,18 @@ $(document).on('click','.increase_amount_button', function(e) {
         });
     });
 
-
+$(document).ready(function(e) {
+    // let search_filter = document.getElementById("search-box").value;
+    var input = document.getElementById("search-box");
+        if (input != null){
+    input.addEventListener("keyup", function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            document.getElementById("search-btn").click();
+        }
+        return false;})
+    }
+});
 
 $(document).ready(function(e) {
 
@@ -266,14 +275,3 @@ $(document).ready(function(e) {
     });
 });
 
-$(document).ready(function(e) {
-    // let search_filter = document.getElementById("search-box").value;
-    var input = document.getElementById("search-box");
-    input.addEventListener("keyup", function (event) {
-        if (event.which === 13) {
-            event.preventDefault();
-            document.getElementById("search-btn").click();
-        }
-        return false;
-    });
-});
