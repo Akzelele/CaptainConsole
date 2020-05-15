@@ -3,16 +3,16 @@
 
 {% block content %}
 <div class="content-section">
-<div class="info-box">
+    <div class="info-box">
 
-    <h3>Contact information</h3>
-        <form method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn-warning" type="submit">Continue to payment</button>
+        <h3>Contact information</h3>
+            <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn-warning" type="submit">Continue to payment</button>
 
-    </form>
-</div>
+        </form>
+    </div>
     <div class="info-box" id="cart_summary">
         {% include "cart/cart_summary.html" %}
         <div class="inner_cart_container"></div>

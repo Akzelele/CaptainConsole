@@ -1,7 +1,12 @@
+<!DOCTYPE html>
+<head>
+    <title>Order completion</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+
 <span class="text-muted">Your Order</span>
     <ul class="list-group mb-3 z-depth-1">
-        <span>Total (USD)</span>
-        <strong> <p id="total"></strong>
+        <li>Total (USD)</li>
     </ul>
 <script>
     function load_cart(cart_key){
@@ -53,8 +58,8 @@
             var customer_cart = load_cart(cart_key);
             generate_checkout_cart(customer_cart,cart_key);
             total = get_total(customer_cart);
-            document.getElementById('total').innerHTML = total;
             EmptyCartLocalStorage(cart_key)
+            document.getElementById('total').innerHTML = total;
         });
 
     </script>
