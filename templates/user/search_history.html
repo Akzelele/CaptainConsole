@@ -20,17 +20,24 @@
                 </a>
             </div>
             {% endfor %}
+
         </div>
             <div class="search-history-buttons">
-            <div>
-                <form method="post" action="">
+            {% if search_history %}
+                <div>
+                <form class="DeleteSearchHistoryButtonDiv" method="post" action="">
                 {% csrf_token %}
                 <button type="submit" id = "DeleteSearchHistoryButton" class="history-btn btn btn-outline-danger">Clear search history</button>
                 </form>
-            </div>
+                </div>
+            {% endif %}
+            {% if not search_history %}
+                <span id="no-history-notification">No search history found!</span>
+            {% endif %}
             <div>
                 <a href="{% url 'item-index' %}"><button type="button" class="history-btn btn btn-primary">Go home</button></a>
             </div>
+
         </div>
 
     </div>
