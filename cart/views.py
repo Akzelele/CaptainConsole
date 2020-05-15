@@ -67,10 +67,24 @@ def review_view(request):
                                                            quantity=quant_list[i],
                                                            order_id_id=order_instance.pk)
 
+        request.session['order_id'] = order_instance.pk
         messages.success(request, f'Purchased successfully!')
-        return redirect('item-index')
+        return redirect(order_review)
 
     return render(request, 'cart/review.html', context)
+
+
+def order_review(request):
+    # The Order PK can be accessed like this
+    # TODO Display all the info regarding the order
+    context = {
+        'order_id': request.session['order_id']
+    }
+    print(context)
+    return render(request, 'cart/order-review.html')
+
+
+
 
 
 def extract_cookies(request):
