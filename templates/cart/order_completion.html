@@ -10,19 +10,19 @@
     </ul>
 <script>
     function load_cart(cart_key){
-        var cart_list = localStorage.getItem(cart_key);
+        let cart_list = localStorage.getItem(cart_key);
         //setCookie(cart_key, cart_list)
         cart_list = JSON.parse(cart_list);
         return cart_list
     }
 
-    function generate_checkout_cart(cart_list,cart_key) {
+    function generate_checkout_cart(cart_list) {
 
         $("div.inner_cart_container").replaceWith(`<div id='cart_summary'></div>`);
         cart_list.map(d => {
-            var totalprice = d.fields.price * d.fields.quantity;
-            var mywrapper = document.createElement('div');
-            var child = `<div class= "list-group-item cart_checkout_item">
+            let totalprice = d.fields.price * d.fields.quantity;
+            let mywrapper = document.createElement('div');
+            let child = `<div class= "list-group-item cart_checkout_item">
 
                             <div>
         <h6 class="my-0"> ${d.fields.quantity} x ${d.fields.name}</h6>
@@ -30,15 +30,15 @@
             <span class="text-muted">$${totalprice}</span>
         </div>`
             mywrapper.innerHTML = child;
-            var div = mywrapper.firstChild;
+            let div = mywrapper.firstChild;
             document.getElementById("cart_summary").appendChild(div);
 
 
         });
-    };
+    }
 
     function get_total(cart_list){
-        var total = 0;
+        let total = 0;
         for (i=0; i<cart_list.length; i++){
             total += cart_list[i].fields.price * cart_list[i].fields.quantity
         }
@@ -53,9 +53,9 @@
     </script>
 
     <script>
-            var cart_key = 'some_cart_key';
-            window.addEventListener('DOMContentLoaded', (event) => {
-            var customer_cart = load_cart(cart_key);
+            let cart_key = 'some_cart_key';
+            window.addEventListener('DOMContentLoaded', () => {
+            let customer_cart = load_cart(cart_key);
             generate_checkout_cart(customer_cart,cart_key);
             total = get_total(customer_cart);
             EmptyCartLocalStorage(cart_key)

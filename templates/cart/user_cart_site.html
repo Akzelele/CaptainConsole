@@ -3,7 +3,7 @@
 
     <script>
     function load_cart(cart_key){
-        var cart_list = localStorage.getItem(cart_key);
+        let cart_list = localStorage.getItem(cart_key);
         cart_list = JSON.parse(cart_list);
         return cart_list
     }
@@ -11,8 +11,8 @@
     function generate_cart(cart_list) {
     $( "div.inner_container" ).replaceWith(`<div id='cart_items_div'></div>`);
     cart_list.map(d => {
-        var mywrapper = document.createElement('div');
-        var child = `<div class="CartItem">
+        let mywrapper = document.createElement('div');
+        let child = `<div class="CartItem">
                     <a class="cart_item_name" href="/items/${d.pk}">
                         <span class="Caption">${ d.fields.name }</span>
                     </a>
@@ -33,34 +33,34 @@
                     </div>
                 </div>`
         mywrapper.innerHTML= child;
-        var div = mywrapper.firstChild;
+        let div = mywrapper.firstChild;
         document.getElementById("cart_items_div").appendChild(div);
 
     })
         if (cart_list.length > 0 || cart_list === null){
-        var mywrapper = document.createElement('div');
-        var continue_payment_child = `<div class="continue_payment">
+        let mywrapper = document.createElement('div');
+        let continue_payment_child = `<div class="continue_payment">
                             <a href="{% url 'contact_view' %}" target="_parent"><button type="button" class="btn btn-warning">Checkout</button></a>
                         </div>`
         mywrapper.innerHTML= continue_payment_child;
-        var div = mywrapper.firstChild;
+        let div = mywrapper.firstChild;
         document.getElementById("cart_items_div").appendChild(div);
 }       else {
-            var mywrapper = document.createElement('div');
-            var continue_payment_child = `<div class="empty-cart"><h4>Your cart is empty!</h4><div class="continue_payment">
+            let mywrapper = document.createElement('div');
+            let continue_payment_child = `<div class="empty-cart"><h4>Your cart is empty!</h4><div class="continue_payment">
             <a href="{% url 'item-index' %}" target="_parent"><button type="button" class="btn btn-primary">Go home</button></a>
             </div></div>`
             mywrapper.innerHTML= continue_payment_child;
-            var div = mywrapper.firstChild;
+            let div = mywrapper.firstChild;
             document.getElementById("cart_items_div").appendChild(div);
         }
     }
     </script>
 
     <script>
-            var cart_key = 'some_cart_key';
-            window.addEventListener('DOMContentLoaded', (event) => {
-            var customer_cart = load_cart(cart_key);
+            let cart_key = 'some_cart_key';
+            window.addEventListener('DOMContentLoaded', () => {
+            let customer_cart = load_cart(cart_key);
             generate_cart(customer_cart);
         });
     </script>
