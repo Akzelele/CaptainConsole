@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1 id="TitleSearch">Search history</h1>
-    <div class="Search_history_container">
-
-
+    <div class="Search_history_container info-box">
+        <h3 class="text-muted">Search history</h3>
 
         <div class="search-content-section">
             {# if search history exists for the user, generate the headlines for the columns #}
             {% if search_history %}
-                <div class="SearchItemClassHeadlines">
+                <div class="SearchItemClassHeader SearchItemClass">
                     <p> <b>DATE</b> </p>
                     <p> <b>ITEM</b> </p>
                 </div>
@@ -22,10 +20,19 @@
                 </a>
             </div>
             {% endfor %}
-            <form class="DeleteSearchHistoryButtonDiv" method="post" action="">
-                {% csrf_token %}
-                <button type="submit" id = "DeleteSearchHistoryButton" class="btn btn-outline-danger">Clear search history</button>
-            </form>
         </div>
+            <div class="search-history-buttons">
+            <div>
+                <form method="post" action="">
+                {% csrf_token %}
+                <button type="submit" id = "DeleteSearchHistoryButton" class="history-btn btn btn-outline-danger">Clear search history</button>
+                </form>
+            </div>
+            <div>
+                <a href="{% url 'item-index' %}"><button type="button" class="history-btn btn btn-primary">Go home</button></a>
+            </div>
+        </div>
+
     </div>
+
 {% endblock %}
