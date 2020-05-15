@@ -8,7 +8,8 @@ from .models import Order, OrderItem
 from item.models import Item
 from django.shortcuts import redirect
 from django.contrib import messages
-
+from django.core.mail import send_mail
+from CaptainConsole.settings import EMAIL_HOST_USER
 
 def index(request):
     context = build_cart_context()
@@ -78,10 +79,21 @@ def order_review(request):
     # The Order PK can be accessed like this
     # TODO Display all the info regarding the order
     context = {
-        'order_id': request.session['order_id']
+        'order_id': request.session['order_id'],
+        'email': request.session['contact_info']['email'],
+        'name': request.session['contact_info']['first_name']
     }
+    print(context)
 
     if request.method == 'POST':
+        send_mail(
+            'Receipt from Captain Console',
+            'Thanks for your purchase ' + context['name'] + '!\n' +
+            'Your Order Number is ' + str(context['order_id']),
+            EMAIL_HOST_USER,
+            [context['email']],
+            fail_silently=True
+        )
         return redirect('/')
 
     return render(request, 'cart/order-review.html', context)
