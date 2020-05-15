@@ -44,8 +44,9 @@
                         </div>`
         mywrapper.innerHTML= continue_payment_child;
         let div = mywrapper.firstChild;
-        document.getElementById("cart_items_div").appendChild(div);
-}       else {
+        document.getElementById("cart_items_div").appendChild(div);}
+
+        else {
             let mywrapper = document.createElement('div');
             let continue_payment_child = `<div class="empty-cart"><h4>Your cart is empty!</h4><div class="continue_payment">
             <a href="{% url 'item-index' %}" target="_parent"><button type="button" class="btn btn-primary">Go home</button></a>
