@@ -1,12 +1,14 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import JsonResponse
 from helper.context_helper import build_context, build_item_context
 from item.models import Item, ItemImage
 from user.models import create_user_history
 import operator
 
+
 def duplicate_remover(d):
   return [i for n, i in enumerate(d) if i not in d[n + 1:]]
+
 
 context = build_context()
 def index(request):
@@ -35,7 +37,6 @@ def index(request):
             items = duplicate_remover(items)
             return JsonResponse({'data': items})
 
-
         else:
             items = [{
                 'id': x['id'],
@@ -47,7 +48,6 @@ def index(request):
             items = duplicate_remover(items)
             return JsonResponse({'data': items})
     return render(request, 'item/index.html', context)
-
 
 
 def get_item_by_id(request, id):

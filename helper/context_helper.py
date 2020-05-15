@@ -1,8 +1,6 @@
 from console.models import Console, Manufacturer
 from item.models import Item, ItemImage
 from user.models import UserSearchHistory
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
 
@@ -34,22 +32,23 @@ def build_cart_context():
     }
 
 
-def build_item_context(id):
+def build_item_context(item_id):
     return {
-        'item': get_object_or_404(Item, pk=id),
+        'item': get_object_or_404(Item, pk=item_id),
         'consoles': Console.objects.all().order_by('name'),
         'manufacturers': Manufacturer.objects.all().order_by('name')
     }
 
 
-def build_console_context(id):
+def build_console_context(console_id):
     manufacturer_dict = build_navbar_context()
     return {
-        'console': get_object_or_404(Console, pk=id),
+        'console': get_object_or_404(Console, pk=console_id),
         'manufacturers': manufacturer_dict,
         'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
         'images': ItemImage.objects.values_list().all()
     }
+
 
 def build_searh_history(currentuser):
     return {
