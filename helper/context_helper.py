@@ -53,5 +53,5 @@ def build_console_context(id):
 
 def build_searh_history(currentuser):
     return {
-        'search_history': UserSearchHistory.objects.filter(user = currentuser)
+        'search_history': UserSearchHistory.objects.filter(user=currentuser)
     }
