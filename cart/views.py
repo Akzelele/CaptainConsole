@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from helper.context_helper import *
-from item.models import Item, ItemImage
 from django.core.serializers import serialize
 from .forms import ContactForm, PaymentForm
 from .models import Order, OrderItem
@@ -10,6 +8,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from CaptainConsole.settings import EMAIL_HOST_USER
+
 
 def index(request):
     context = build_cart_context()
@@ -97,9 +96,6 @@ def order_review(request):
         return redirect('/')
 
     return render(request, 'cart/order-review.html', context)
-
-
-
 
 
 def extract_cookies(request):
