@@ -4,7 +4,8 @@ from user.forms.profile_form import ProfileForm, EditProfileForm, RegistrationFo
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from user.models import Profile
-
+from user.models import UserSearchHistory
+from helper.context_helper import build_searh_history
 
 # Create your views here.
 def register(request):
@@ -75,4 +76,9 @@ def edit_profile_picture(request):
 
 
 def search_history(request):
-    return render(request, 'user/search_history.html')
+    username = request.user.id
+    if request.method == 'POST':
+        thing_to_delete = UserSearchHistory.objects.filter(user=username)
+        thing_to_delete.delete()
+    search_history_context = build_searh_history(username)
+    return render(request, 'user/search_history.html', search_history_context)

@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <p>{{ userhistory }}</p>
     <h1>Search history</h1>
-    {% for searches in userhistory %}
-        <div class="s">
-            <p>1</p>
+    <div class="search-content-section">
+        {% for searches in search_history %}
+        <div class="SearchItemClass">
+            <p>{{ searches.visited}}</p>
+            <a href = "/items/{{ searches.item.id }}">
+                <p>{{ searches.item.name }}</p>
+            </a>
         </div>
     {% endfor %}
-    <div class="content-section">
-
     </div>
 
+    <form class="DeleteSearchHistoryButtonDiv" method="post" action="">
+        {% csrf_token %}
+        <button type="submit" id = "DeleteSearchHistoryButton" class="btn btn-outline-danger">Clear search history</button>
+
+    </form>
 {% endblock %}

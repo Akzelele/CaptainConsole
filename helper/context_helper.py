@@ -1,5 +1,8 @@
 from console.models import Console, Manufacturer
 from item.models import Item, ItemImage
+from user.models import UserSearchHistory
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
 
@@ -46,4 +49,9 @@ def build_console_context(id):
         'manufacturers': manufacturer_dict,
         'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
         'images': ItemImage.objects.values_list().all()
+    }
+
+def build_searh_history(currentuser):
+    return {
+        'search_history': UserSearchHistory.objects.filter(user = currentuser)
     }
