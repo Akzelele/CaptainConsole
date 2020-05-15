@@ -413,8 +413,7 @@ width: auto;
     margin-left: 10px;
 }
 
-#Notificiation {
-    text-align: center;
+#no-history-notification {
     color: indianred;
-
+    float:left
 }
