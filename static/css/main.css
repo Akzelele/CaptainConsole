@@ -146,6 +146,11 @@
     width: 150px;
 }
 
+.ItemDetailsPage .ItemPrice{
+    margin: 20px;
+    align-self: flex-end;
+}
+
 
 .ItemDetailsPage .CartButton{
     align-self: flex-end;
