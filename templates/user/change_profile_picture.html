@@ -2,8 +2,8 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">
-   <img id="ProfilePic" src="{{ user.profile.profile_image }}" alt="{{ user }}">
-    <form method="POST">
+   <img id="ProfilePic" src="{{  user.profile.profile_image.url }}" alt="{{ user }}">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Change Profile Picture</legend>

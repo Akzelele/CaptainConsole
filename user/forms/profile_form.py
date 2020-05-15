@@ -10,10 +10,7 @@ from django.contrib.auth.forms import UserChangeForm
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = [ 'id', 'user' ]
-        widgets = {
-            'profile_image': widgets.TextInput(attrs={ 'class' : 'form-control'})
-        }
+        fields = ('profile_image',)
 
 
 class EditProfileForm(UserChangeForm):

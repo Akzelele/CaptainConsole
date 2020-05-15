@@ -62,7 +62,7 @@ def change_password(request):
 def edit_profile_picture(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
-        form = ProfileForm(instance=profile, data=request.POST)
+        form = ProfileForm(instance=profile, files=request.FILES, data=request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user

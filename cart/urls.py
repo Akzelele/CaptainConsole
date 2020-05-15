@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import (
     index,
     post_item_list,
@@ -11,5 +13,4 @@ urlpatterns = [
     path('contact', contact_view, name="contact_view"),
     path('payment', payment_view, name="payment_view"),
     path('review', review_view, name="review_view")
-
 ]
