@@ -2,8 +2,19 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Order review</h1>
-    <div class="OrderInfo">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="content-section">
+                <div class="info-box">
+                    <h1>Thank you for your purchase!</h1>
+                    <h2>Your Order ID is: {{ order_id }}</h2>
+                    <p>You can pick your product up at our store in Borgartún 26 during opening hours</p>
+                    <p> Just Bring your Order ID with you and you will have your products faster than the winds blow</p>
+                </div>
+            </div>
+            <button class="btn-warning" type="submit">Back to Home Page</button>
+        </form>
 
-    </div>
+        </div>
 {% endblock content %}
