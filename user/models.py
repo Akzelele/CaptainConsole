@@ -11,6 +11,6 @@ class Profile(models.Model):
 
 
 class UserSearchHistory(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     visited = models.DateField(auto_now=True)
