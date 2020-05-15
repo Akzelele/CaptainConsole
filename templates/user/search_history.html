@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+    <p>{{ userhistory }}</p>
     <h1>Search history</h1>
-    <p>Soon</p>
+    {% for searches in userhistory %}
+        <div class="s">
+            <p>1</p>
+        </div>
+    {% endfor %}
     <div class="content-section">
 
     </div>

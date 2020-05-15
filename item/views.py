@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from helper.context_helper import build_context, build_item_context
 from item.models import Item, ItemImage
+from user.models import create_user_history
 import operator
 
 def duplicate_remover(d):
@@ -51,4 +52,5 @@ def index(request):
 
 def get_item_by_id(request, id):
     item_context = build_item_context(id)
+    create_user_history(request)
     return render(request, 'item/item_details.html', item_context)
