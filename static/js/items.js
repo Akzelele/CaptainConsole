@@ -265,3 +265,15 @@ $(document).ready(function(e) {
         })
     });
 });
+
+$(document).ready(function(e) {
+    // let search_filter = document.getElementById("search-box").value;
+    var input = document.getElementById("search-box");
+    input.addEventListener("keyup", function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            document.getElementById("search-btn").click();
+        }
+        return false;
+    });
+});
