@@ -22,10 +22,15 @@
                 </a>
             </div>
             {% endfor %}
-            <form class="DeleteSearchHistoryButtonDiv" method="post" action="">
+            {% if search_history %}
+                <form class="DeleteSearchHistoryButtonDiv" method="post" action="">
                 {% csrf_token %}
                 <button type="submit" id = "DeleteSearchHistoryButton" class="btn btn-outline-danger">Clear search history</button>
-            </form>
+                </form>
+            {% endif %}
+            {% if not search_history %}
+                <p id="Notificiation">No search history found!</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
