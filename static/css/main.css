@@ -104,17 +104,12 @@
     background-color: #87adb8;
 }
 
-.ItemDetailsPage{
-    border: black 1px solid;
-    margin: 20px auto 10px;
-    background-color: lightgray;
-    max-width: 800px;
 
-}
 
 .ItemDetailsPageInfo{
     display: flex;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 .ItemTitle{
@@ -123,41 +118,27 @@
     margin-bottom: 20px;
 }
 
-.ItemDescription{
-    margin-left: 20px;
-    background-color: white;
-    border: black 1px solid;
-    min-width: 200px;
-    max-width: 350px;
-    padding: 10px;
-    margin-bottom: auto;
-
-}
-
-.ItemRightSide{
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 400px;
-}
 
 .ItemPicGallery{
-    align-self: flex-start;
-    margin: 20px;
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 150px;
+    justify-content: space-evenly;
+}
+.ItemPicGallery .ItemImg{
+
+    height: 100%;
+    max-width: 100%;
+
+    }
+.details_image{
+    width: 33%;
+    height: 300px;
+}
+.ItemPrice{
+    margin: 10px;
 }
 
-.ItemDetailsPage .ItemPrice{
-    margin: 20px;
-    align-self: flex-end;
-}
 
-
-.ItemDetailsPage .CartButton{
-    align-self: flex-end;
-}
 
 
 .site-footer
@@ -313,9 +294,7 @@
     margin:15px;
 }
 
-.ItemPicGallery .ItemImg{
-    max-width: 150px;
-}
+
 
 .ItemImg:hover{
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
@@ -348,7 +327,6 @@
     align-content: center;
     border: 1px solid rgba(0, 0, 0, 0.12);
     font-size: 14px;
-    flex-direction: row;
 }
 
 #ItemQuant {

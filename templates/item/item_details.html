@@ -1,22 +1,24 @@
 {% extends 'base.html' %}
     {% block content %}
-        <div class="ItemDetailsPage">
-            <h1 class="ItemTitle">{{ item.name }}</h1>
+        <div class="info-box">
+            <h1 class="text-muted">{{ item.name }}</h1>
             <div class="ItemDetailsPageInfo">
-                <div class="ItemDescription">
-                    <p>{{ item.description }}</p>
-                </div>
-                <div class="ItemRightSide">
+                <div class="ItemPicGallery">
                     {% for item_image in item.itemimage_set.all %}
-                        <div class="ItemPicGallery">
+                        <div class="details_image">
                             <img src="{{ item_image.image }}" class="ItemImg"/>
                         </div>
                     {% endfor %}
+                </div>
+                <div class="info-box">
+                    <p>{{ item.description }}</p>
+                </div>
+                <div class="search-history-buttons">
                     <div class="ItemPrice">
-                        <p>{{ item.price }}$</p>
+                        <b>{{ item.price }}$</b>
                     </div>
                     <div class="CartButton" id="{{item.id}}">
-                        <button type="button" class="btn btn-outline-primary">Add to Cart</button>
+                        <button type="button" class="btn btn-warning">Add to Cart</button>
                     </div>
                 </div>
             </div>
