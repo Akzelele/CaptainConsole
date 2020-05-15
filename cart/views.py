@@ -75,7 +75,9 @@ def review_view(request):
 
 
 def extract_cookies(request):
+
     items = request.COOKIES.get('some_cart_key')
+    print(items)
     temp_list = items.split('"')
 
     pk_list = []

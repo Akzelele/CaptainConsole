@@ -82,9 +82,6 @@
     text-align: center;
 }
 
-.SingleItem #AddToCartButton {
-
-}
 
 .Caption {
     display: block;
@@ -142,11 +139,18 @@
 }
 
 .ItemPicGallery{
+    align-self: flex-start;
     margin: 20px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 150px;
 }
+
+
+.ItemDetailsPage .CartButton{
+    align-self: flex-end;
+}
+
 
 .site-footer
 {
@@ -302,8 +306,7 @@
 }
 
 .ItemPicGallery .ItemImg{
-    max-height: 220px;
-    max-width: 210px;
+    max-width: 150px;
 }
 
 .ItemImg:hover{
