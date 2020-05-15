@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-    <div id="ProfileContainer">
-        <h2 id="ProfileInfo">Profile Information</h2>
-        <h4 id="GreetingMessage">Greetings {{ user }}! We at Captain Console hope you're having a great time!</h4>
-        <h4 id="UserInfo">Username: {{ user }}</h4>
-        <h4 id="UserInfo">First Name: {{ user.first_name }}</h4>
-        <h4 id="UserInfo">Last Name: {{ user.last_name }}</h4>
-        <h4 id="UserInfo">Email: {{ user.email }}</h4>
-        <img id="ProfilePic" src="{{ user.profile.profile_image.url }}" alt="{{ user }}">
+    <div class="container-fluid">
+            <h3 class="text-muted">My Profile</h3>
+        <p>Greetings {{ user }}! We at Captain Console hope you're having a great time!</p>
+        <div class="info-box">
+         <img id="ProfilePic" src="{{ user.profile.profile_image.url }}" alt="{{ user }}">
+
+        <p>Username: {{ user }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        </div>
+
 
         <a id="ProfileInfo-btn" href="/user/profile/edit/">
             <button type="button" id = "ChangeUserInfo-btn" class="btn btn-outline-primary">Change User Info</button>
@@ -23,6 +27,6 @@
          <a id="ProfileInfo-btn" href="/user/profile/history">
             <button type="button" id = "SearchHistory-btn" class="btn btn-outline-primary">View Search History</button>
         </a>
+ </div>
 
-    </div>
 {% endblock %}

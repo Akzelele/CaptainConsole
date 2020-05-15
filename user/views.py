@@ -6,6 +6,7 @@ from django.contrib import messages
 from user.models import Profile
 from user.models import UserSearchHistory
 from helper.context_helper import build_searh_history
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -29,19 +30,26 @@ def profile(request):
     return render(request, 'user/profile.html', args)
 
 
+@login_required
 def edit_profile(request):
-    if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=request.user)
+    try:
+        if request.method == 'POST':
+            form = EditProfileForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                messages.success(request, f'Profile edited successfully!')
+                return redirect('profile')
+            else:
+                messages.error(request, f'USERNAME TAKEN PLEASE SELECT ANOTHER ONE')
+                return redirect('profile')
 
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'Profile edited successfully!')
-            return redirect('profile')
+        else:
+            form = EditProfileForm(instance=request.user)
+            args = {'form': form}
+            return render(request, 'user/edit_profile.html', args)
 
-    else:
-        form = EditProfileForm(instance=request.user)
-        args = {'form': form}
-        return render(request, 'user/edit_profile.html', args)
+    except ValueError:
+        return redirect('profile')
 
 
 def change_password(request):

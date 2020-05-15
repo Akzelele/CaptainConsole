@@ -415,5 +415,11 @@ width: auto;
 
 #no-history-notification {
     color: indianred;
-    float:left
+    margin: 25px;
+}
+
+
+.container-fluid{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

@@ -13,18 +13,6 @@ class ProfileForm(ModelForm):
         fields = ('profile_image',)
 
 
-class EditProfileForm(UserChangeForm):
-    class Meta:
-        model = User
-        fields = (
-            'email',
-            'username',
-            'first_name',
-            'last_name',
-            'password'
-        )
-
-
 class RegistrationForm(UserCreationForm):
 
     email = forms.EmailField()
@@ -48,6 +36,20 @@ class RegistrationForm(UserCreationForm):
             return email
 
         raise forms.ValidationError('This email address is already in use.')
+
+
+class EditProfileForm(UserChangeForm):
+        class Meta:
+            model = User
+            fields = (
+                'email',
+                'username',
+                'first_name',
+                'last_name',
+                'password'
+            )
+
+
 
 
 
