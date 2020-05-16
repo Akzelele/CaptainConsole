@@ -9,7 +9,7 @@ def build_context():
     return {
         'items': Item.objects.values('id', 'name', 'price', 'console', 'category', 'itemimage'),
         'manufacturers': manufacturer_dict,
-        'images': ItemImage.objects.values_list().all()
+        'images': ItemImage.objects.values_list().all().distinct('item_id')
     }
 
 

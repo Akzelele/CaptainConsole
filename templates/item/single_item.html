@@ -1,14 +1,19 @@
-<div class="SingleItem" item-category = {{ item.category }}>
-    {% for item_image in images %}
-        {% if item_image.0 == item.itemimage %}
-                <a href = "/items/{{ item.id }}">
-                    <img class="ItemImg" src="{{ item_image.1 }}" alt="{{ item.name }} image" />
-                </a>
+{% for item_image in images %}
+    {% if item_image.0 == item.itemimage %}
+        <div class="SingleItem" item-category = {{ item.category }}>
+            <a href = "/items/{{ item.id }}">
+                <img class="ItemImg" src="{{ item_image.1 }}" alt="{{ item.name }} image" />
+            </a>
+            <span class="Caption">{{ item.name }}</span>
+            <p class="ItemPrice">$ {{ item.price}}</p>
+            <div class="CartButton" id="{{item.id}}">
+            <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
+            </div>
+        </div>
         {% endif %}
     {% endfor %}
-    <span class="Caption">{{ item.name }}</span>
-    <p class="ItemPrice">$ {{ item.price}}</p>
-    <div class="CartButton" id="{{item.id}}">
-        <button type="button" id = "AddToCartButton" class="btn btn-outline-primary">Add to Cart</button>
-    </div>
-</div>
+
+
+
+
+
